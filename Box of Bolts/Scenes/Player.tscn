@@ -21,8 +21,6 @@ script = ExtResource( 2 )
 [node name="Model" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="Controller" type="Node" parent="."]
-
 [node name="View" type="Node" parent="."]
 script = ExtResource( 6 )
 

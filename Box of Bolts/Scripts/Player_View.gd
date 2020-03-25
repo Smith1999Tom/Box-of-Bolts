@@ -1,6 +1,8 @@
 extends Node
 
 signal press_up
+signal press_left
+signal press_right
 
 onready var label = $Label
 
