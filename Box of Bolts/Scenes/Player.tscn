@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/RArm/RightArm.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Art/Body.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Player_Model.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Player_View.gd" type="Script" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,16 +14,35 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="PlayerController" type="Node2D"]
+[node name="Player" type="Node2D"]
 position = Vector2( -66.3419, 21.2294 )
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 315.1, 327.167 )
+[node name="Model" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Controller" type="Node" parent="."]
+
+[node name="View" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="View"]
+position = Vector2( 248.758, 348.396 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "StaticMech"
 
-[node name="RightArm" parent="." instance=ExtResource( 1 )]
-position = Vector2( 137.328, 264.041 )
+[node name="RightArm" parent="View" instance=ExtResource( 1 )]
+position = Vector2( 70.9861, 285.27 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Label" type="Label" parent="View"]
+margin_left = 304.0
+margin_top = 166.0
+margin_right = 448.0
+margin_bottom = 255.0
+text = "health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="press_up" from="View" to="." method="_on_View_press_up"]
