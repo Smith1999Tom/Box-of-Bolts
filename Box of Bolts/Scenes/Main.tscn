@@ -1,61 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Fonts/District.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Button.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-size = 144
-outline_size = 8
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 2 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 18.9473, 14.7368 )
-
-[node name="MainMenu" type="CanvasLayer" parent="."]
-script = ExtResource( 5 )
-
-[node name="ColorRect" type="ColorRect" parent="MainMenu"]
-margin_left = -9.04407
-margin_top = -9.04401
-margin_right = 1035.96
-margin_bottom = 610.956
-color = Color( 0.262745, 0.376471, 0.0588235, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MainMenu"]
-margin_left = 254.355
-margin_top = 16.2753
-margin_right = 734.355
-margin_bottom = 343.275
-custom_fonts/font = SubResource( 1 )
-text = "Box of Bolts!"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="MainMenu"]
-margin_left = 379.108
-margin_top = 407.136
-margin_right = 609.108
-margin_bottom = 545.136
-custom_fonts/font = SubResource( 2 )
-text = "Start!"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="MainMenu/Button" to="MainMenu/Button" method="_on_Button_pressed"]

@@ -15,5 +15,4 @@ func _ready():
 
 func _on_Button_pressed():
 	print("Start game!")
-	emit_signal(("start_fight"))
 	pass # Replace with function body.
