@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Art/Body.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player_Model.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Player_View.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player_View.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -15,32 +15,30 @@ animations = [ {
 } ]
 
 [node name="Player" type="Node2D"]
-position = Vector2( -66.3419, 21.2294 )
 script = ExtResource( 2 )
 
 [node name="Model" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="View" type="Node" parent="."]
-script = ExtResource( 6 )
+[node name="View" type="Area2D" parent="."]
+script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="View"]
-position = Vector2( 248.758, 348.396 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "StaticMech"
 
 [node name="RightArm" parent="View" instance=ExtResource( 1 )]
-position = Vector2( 70.9861, 285.27 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Label" type="Label" parent="View"]
-margin_left = 304.0
-margin_top = 166.0
-margin_right = 448.0
-margin_bottom = 255.0
+margin_left = -15.8014
+margin_top = -103.216
+margin_right = 128.199
+margin_bottom = -14.2162
 text = "health"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="press_up" from="View" to="." method="_on_View_press_up"]
+[connection signal="press_left" from="View" to="." method="_on_View_press_left"]
+[connection signal="press_right" from="View" to="." method="_on_View_press_right"]

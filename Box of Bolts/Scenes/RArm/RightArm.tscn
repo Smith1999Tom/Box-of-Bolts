@@ -83,15 +83,13 @@ tracks/5/keys = {
 [node name="RightArm" type="Node2D"]
 
 [node name="RBicep" parent="." instance=ExtResource( 3 )]
-position = Vector2( 343.304, 200.339 )
-rotation = 0.887243
+position = Vector2( 52.2283, 53.709 )
 
 [node name="RForearm" parent="." instance=ExtResource( 1 )]
-position = Vector2( 397.38, 223.294 )
-rotation = 0.547463
+position = Vector2( 127.325, 28.9792 )
 
 [node name="RFist" parent="." instance=ExtResource( 2 )]
-position = Vector2( 243.332, -4.70959 )
+position = Vector2( 165.135, -41.2583 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.57
