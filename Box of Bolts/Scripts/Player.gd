@@ -1,10 +1,12 @@
 extends Node
 
+#Define model and view child nodes
 onready var model = $Model
 onready var view = $View
 
 func _ready():
 	view.move_to(Vector2(200, 200))
+	
 	pass
 
 func _on_View_press_up():
@@ -15,16 +17,16 @@ func _on_View_press_up():
 
 
 func _on_View_press_left():
-	if(!$Model.get_moving()):
-		$Model.set_moving(true)
-		$View.move(-50)
+	if(!model.get_moving()):
+		model.set_moving(true)
+		view.move(-50)
 		yield(get_tree().create_timer(1), "timeout")
-		$Model.set_moving(false)
+		model.set_moving(false)
 
 
 func _on_View_press_right():
-	if(!$Model.get_moving()):
-		$Model.set_moving(true)
-		$View.move(50)
+	if(!model.get_moving()):
+		model.set_moving(true)
+		view.move(50)
 		yield(get_tree().create_timer(1), "timeout")
-		$Model.set_moving(false)
+		model.set_moving(false)
