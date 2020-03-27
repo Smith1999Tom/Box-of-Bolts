@@ -5,9 +5,9 @@ onready var model = $Model
 onready var view = $View
 
 func _ready():
-	view.move_to(Vector2(200, 200))
-	
+	view.move_to(Vector2(300, 500))
 	pass
+
 
 func _on_View_press_up():
 	var health = model.reduce_health(10)
