@@ -45,4 +45,25 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CountLbl" type="Label" parent="."]
+margin_left = 739.0
+margin_top = 152.0
+margin_right = 929.0
+margin_bottom = 271.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CountBtn" type="Button" parent="."]
+margin_left = 759.717
+margin_top = 272.041
+margin_right = 827.717
+margin_bottom = 318.041
+text = "Count"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="BackBtn" to="." method="_on_BackBtn_pressed"]
+[connection signal="pressed" from="CountBtn" to="." method="_on_CountBtn_pressed"]

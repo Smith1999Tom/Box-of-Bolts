@@ -5,6 +5,7 @@ const Command = preload("res://Scenes/Command/Command.tscn")
 const MainMenu = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const UpgradeMenu = preload("res://Scenes/UpgradeMenu/UpgradeMenu.tscn")
 const LeagueMenu = preload("res://Scenes/LeagueMenu/LeagueMenu.tscn")
+const Player = preload("res://Scenes/Player/Player.tscn")
 
 onready var root = get_tree().get_root()
 
@@ -13,6 +14,7 @@ var command = null
 var upgradeMenu = null
 var leagueMenu = null
 var mainMenu = null
+var player = null
 
 func _ready():
 	ai = AI.instance()
@@ -20,10 +22,13 @@ func _ready():
 	mainMenu = MainMenu.instance()
 	upgradeMenu = UpgradeMenu.instance()
 	leagueMenu = LeagueMenu.instance()
+	player = Player.instance()
+	
+	player.set_name("player")
 	
 	mainMenu.init(self)
-	leagueMenu.init(self)
-	upgradeMenu.init(self)
+	leagueMenu.init(self, player)
+	upgradeMenu.init(self, player)
 	
 	
 	
@@ -32,31 +37,30 @@ func _ready():
 	root.call_deferred("add_child", mainMenu)
 	#root.call_deferred("add_child", upgradeMenu)
 	
+	
+	
+	
+	
+	
+	
+	
 
 
 func _on_changeMenu_League():
-	if(root.has_node("MainMenu")):
-		root.call_deferred("remove_child", mainMenu)
-	if(root.has_node("UpgradeMenu")):
-		root.call_deferred("remove_child", upgradeMenu)
 	root.call_deferred("add_child", leagueMenu)
 	pass
 	
 func _on_changeMenu_Upgrade():
-	if(root.has_node("MainMenu")):
-		root.call_deferred("remove_child", mainMenu)
-	if(root.has_node("LeagueMenu")):
-		root.call_deferred("remove_child", leagueMenu)
 	root.call_deferred("add_child", upgradeMenu)
 	pass
 	
 func _on_changeMenu_Main():
-	if(root.has_node("UpgradeMenu")):
-		root.call_deferred("remove_child", upgradeMenu)
-	if(root.has_node("LeagueMenu")):
-		root.call_deferred("remove_child", leagueMenu)
 	root.call_deferred("add_child", mainMenu)
 	pass
+	
+func get_player_reference():
+	return player
+
 
 
 
