@@ -5,29 +5,12 @@
 [ext_resource path="res://Scenes/MainMenu/MainMenu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="GDScript" id=2]
-script/source = "extends Button
-
-signal start_fight
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-
-
-func _on_Button_pressed():
-	print(\"Start game!\")
-	emit_signal((\"start_fight\"))
-	pass # Replace with function body.
-"
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -42,18 +25,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 379.108
-margin_top = 407.136
-margin_right = 609.108
-margin_bottom = 545.136
-custom_fonts/font = SubResource( 1 )
-text = "Start!"
-script = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 223.926
 margin_top = 26.8462
@@ -64,5 +35,27 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
-[connection signal="start_fight" from="Button" to="." method="_on_Button_start_fight"]
+
+[node name="LeagueBtn" type="Button" parent="."]
+margin_left = 150.691
+margin_top = 416.351
+margin_right = 379.691
+margin_bottom = 526.351
+custom_fonts/font = SubResource( 1 )
+text = "League"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeBtn" type="Button" parent="."]
+margin_left = 571.741
+margin_top = 407.309
+margin_right = 795.741
+margin_bottom = 515.309
+custom_fonts/font = SubResource( 2 )
+text = "Upgrade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="LeagueBtn" to="." method="_on_LeagueBtn_pressed"]
+[connection signal="pressed" from="UpgradeBtn" to="." method="_on_UpgradeBtn_pressed"]

@@ -1,22 +1,23 @@
 extends CanvasLayer
 
-signal start_game
+signal changeMenu_League
+signal changeMenu_Upgrade
 
+var main = null
 
-var player
-
-func hide():
-	$Label.hide()
-	$Button.hide()
-	
-func show():
-	$Label.show()
-	$Button.show()
 
 func _ready():
-	self.connect("start_game", self.get_parent(), "_on_MainMenu_start_game")
-	
+	connect("changeMenu_League", main, "_on_changeMenu_League")
+	connect("changeMenu_Upgrade", main, "_on_changeMenu_Upgrade")
+	pass
 
-func _on_Button_start_fight():
-	emit_signal("start_game")
-	
+func init(MainReference):
+	main = MainReference
+	pass
+
+func _on_LeagueBtn_pressed():
+	emit_signal("changeMenu_League")
+
+
+func _on_UpgradeBtn_pressed():
+	emit_signal("changeMenu_Upgrade")
