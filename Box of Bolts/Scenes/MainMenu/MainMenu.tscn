@@ -1,15 +1,36 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/District.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Button.gd" type="Script" id=3]
-[ext_resource path="res://Art/Logo B&W.png" type="Texture" id=4]
+[ext_resource path="res://Art/Logo B&W.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainMenu/MainMenu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+signal start_fight
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+
+
+func _on_Button_pressed():
+	print(\"Start game!\")
+	emit_signal((\"start_fight\"))
+	pass # Replace with function body.
+"
+
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -9.04407
@@ -28,7 +49,7 @@ margin_right = 609.108
 margin_bottom = 545.136
 custom_fonts/font = SubResource( 1 )
 text = "Start!"
-script = ExtResource( 3 )
+script = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,7 +60,7 @@ margin_top = 26.8462
 margin_right = 4170.93
 margin_bottom = 2571.85
 rect_scale = Vector2( 0.14, 0.14 )
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

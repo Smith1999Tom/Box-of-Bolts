@@ -1,6 +1,6 @@
-extends Button
+extends Node
 
-signal start_fight
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -11,8 +11,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-
-
-func _on_Button_pressed():
-	print("Start game!")
-	pass # Replace with function body.
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
