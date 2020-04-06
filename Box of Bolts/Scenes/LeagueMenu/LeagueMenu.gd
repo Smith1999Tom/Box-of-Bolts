@@ -32,7 +32,7 @@ func _on_BackBtn_pressed():
 
 func _on_StartBtn_pressed():
 	root.call_deferred("add_child", stage)
-	stage.init(player)
+	stage.init(main)
 	#main.unload_menus()
 	root.call_deferred("remove_child", self)
 	

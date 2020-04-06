@@ -6,6 +6,7 @@ const MainMenu = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const UpgradeMenu = preload("res://Scenes/UpgradeMenu/UpgradeMenu.tscn")
 const LeagueMenu = preload("res://Scenes/LeagueMenu/LeagueMenu.tscn")
 const Player = preload("res://Scenes/Player/Player.tscn")
+const Enemy = preload("res://Scenes/Enemy/Enemy.tscn")
 
 onready var root = get_tree().get_root()
 
@@ -15,6 +16,7 @@ var upgradeMenu = null
 var leagueMenu = null
 var mainMenu = null
 var player = null
+var enemy = null
 
 func _ready():
 	ai = AI.instance()
@@ -23,12 +25,14 @@ func _ready():
 	upgradeMenu = UpgradeMenu.instance()
 	leagueMenu = LeagueMenu.instance()
 	player = Player.instance()
+	enemy = Enemy.instance()
 	
 	player.set_name("player")
 	
 	mainMenu.init(self)
 	leagueMenu.init(self, player)
 	upgradeMenu.init(self, player)
+	ai.init(self, command, enemy)
 	
 	
 	
@@ -60,6 +64,9 @@ func _on_changeMenu_Main():
 	
 func get_player_reference():
 	return player
+	
+func get_enemy_reference():
+	return enemy
 
 
 
