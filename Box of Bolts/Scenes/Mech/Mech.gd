@@ -18,6 +18,9 @@ func set_health(aHealth):
 	
 func set_energy(aEnergy):
 	energy = aEnergy
+	
+func step_back():
+	print("Stepping back")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

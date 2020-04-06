@@ -1,7 +1,7 @@
 extends Node
 
 const AI = preload("res://Scenes/AI/AI.tscn")
-const Command = preload("res://Scenes/Command/Command.tscn")
+const Command = preload("res://Scenes/Command/Command.gd")
 const MainMenu = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const UpgradeMenu = preload("res://Scenes/UpgradeMenu/UpgradeMenu.tscn")
 const LeagueMenu = preload("res://Scenes/LeagueMenu/LeagueMenu.tscn")
@@ -17,15 +17,19 @@ var leagueMenu = null
 var mainMenu = null
 var player = null
 var enemy = null
+var input = null
+
+var actionQueue = []
 
 func _ready():
 	ai = AI.instance()
-	command = Command.instance()
+	command = Command.new()
 	mainMenu = MainMenu.instance()
 	upgradeMenu = UpgradeMenu.instance()
 	leagueMenu = LeagueMenu.instance()
 	player = Player.instance()
 	enemy = Enemy.instance()
+	input = InputHandler.new()
 	
 	player.set_name("player")
 	
@@ -33,6 +37,7 @@ func _ready():
 	leagueMenu.init(self, player)
 	upgradeMenu.init(self, player)
 	ai.init(self, command, enemy)
+	input.init()
 	
 	
 	
@@ -69,54 +74,36 @@ func get_enemy_reference():
 	return enemy
 
 
+func _process(delta):
+	
+	
+	var c : Command = input.handleInput()
+	
+	if(c):
+		c.execute(player)
+		
+	pass
 
 
 
-
-#
-#var currentScene = null
-#var currentSceneNode = null
-#
-#const MainMenu = preload("res://Scenes/MainMenu.tscn")
-#const Arena = preload("res://Scenes/Arena.tscn")
-#
-#const obj_player = preload("res://Scenes/Player.tscn")
-#
-#var scenes = {"MainMenu": MainMenu, "Arena": Arena}
-#var player
-#
-#
-#
-## Called when the node enters the scene tree for the first time.
-#func _ready():
-#	change_scene("MainMenu")
-#
-#
-#func change_scene(newScene):
-#	if scenes.has(newScene):
-#		if(currentScene != null):
-#			unload_scene(scenes[currentScene])
-#		currentScene = newScene
-#		load_scene(scenes[currentScene])
-#
-#		return true
-#	else:
-#		return false
-#	pass
-#
-#func unload_scene(scene):
-#	currentSceneNode.queue_free()
-#
-#func load_scene(scene):
-#	currentSceneNode = scene.instance()
-#	add_child(currentSceneNode)
-#
-#func _on_MainMenu_start_game():
-#	change_scene("Arena")
-#	create_player()
-#	pass
-#
-#func create_player():
-#	player = obj_player.instance()
-#	add_child(player)
-#
+class InputHandler:
+	
+	var buttonLeft : Command
+	
+	func _ready():
+		#buttonLeft = Command.StepBackCommand.new()
+		pass
+		
+	func init():
+		buttonLeft = StepBackCommand.new()
+	
+	
+	func handleInput():
+		if(Input.is_action_just_pressed("ui_left")):
+			#print("left")
+			return buttonLeft
+		pass
+		
+	
+		
+	
