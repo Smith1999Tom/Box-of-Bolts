@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const AI = preload("res://Scenes/AI/AI.tscn")
 const Command = preload("res://Scenes/Command/Command.gd")
@@ -77,7 +77,7 @@ func get_enemy_reference():
 func _process(delta):
 	
 	
-	var c : Command = input.handleInput()
+	var c : Command = input.handleInput(get_global_mouse_position())
 	
 	if(c):
 		c.execute(player)
@@ -89,20 +89,73 @@ func _process(delta):
 class InputHandler:
 	
 	var buttonLeft : Command
+	var buttonRight : Command
+	
+	var tapLeft : Command
+	var tapRight : Command
+	var tapBoth : Command
+	var swipeLeft : Command
+	var swipeRight : Command
+	
+	#Swipe detection taken from https://godotengine.org/qa/19386/how-to-detect-swipe-using-3-0
+	var swipeStart = null
+	var minimumDrag = 100
+	
 	
 	func _ready():
 		#buttonLeft = Command.StepBackCommand.new()
 		pass
 		
 	func init():
-		buttonLeft = StepBackCommand.new()
+		
+		#buttonLeft = StepBackCommand.new()
+		#buttonRight = RPunchCommand.new()
+		
+		tapLeft = LPunchCommand.new()
+		tapRight = RPunchCommand.new()
+		tapBoth = BlockCommand.new()
+		swipeLeft = StepBackCommand.new()
+		swipeRight = StepForwardCommand.new()
 	
 	
-	func handleInput():
-		if(Input.is_action_just_pressed("ui_left")):
-			#print("left")
-			return buttonLeft
-		pass
+	func handleInput(mousePos):
+		var action
+#		if(Input.is_action_just_pressed("ui_left")):
+#			#print("left")
+#			return buttonLeft
+#		if(Input.is_action_just_pressed("ui_right")):
+#			#print("left")
+#			return buttonRight
+		
+		if(Input.is_action_just_pressed("click")):
+			swipeStart = mousePos
+		if(Input.is_action_just_released("click")):
+			action = calculateSwipe(mousePos)
+			if(action):
+				return action
+			if(mousePos.x < 500):
+				return tapLeft
+			else:
+				return tapRight
+				
+			
+			
+	
+	#Swipe detection taken from https://godotengine.org/qa/19386/how-to-detect-swipe-using-3-0		
+	func calculateSwipe(swipeEnd):
+		if(swipeStart == null):
+			return
+		var swipe = swipeEnd - swipeStart
+		print("DEBUG: SS=" + str(swipeStart) + " SE+" + str(swipeEnd))
+		print("DEBUG: swipe=" + str(swipe))
+		if(abs(swipe.x) > minimumDrag):
+			if(swipe.x > 0):
+				return swipeRight
+			else:
+				return swipeLeft
+		
+
+		
 		
 	
 		
