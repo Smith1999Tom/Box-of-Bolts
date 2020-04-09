@@ -302,8 +302,9 @@ animations = [ {
 } ]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 821.027, 413.151 )
+position = Vector2( 1640.11, 926.235 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 59 )
+flip_h = true

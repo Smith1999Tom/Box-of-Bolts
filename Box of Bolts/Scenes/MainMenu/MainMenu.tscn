@@ -16,20 +16,20 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -9.04407
-margin_top = -9.04401
-margin_right = 1035.96
-margin_bottom = 610.956
+margin_left = -9.0
+margin_top = -9.0
+margin_right = 1915.0
+margin_bottom = 1080.0
 color = Color( 0.262745, 0.376471, 0.0588235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 223.926
-margin_top = 26.8462
-margin_right = 4170.93
-margin_bottom = 2571.85
+margin_left = 706.511
+margin_top = 199.796
+margin_right = 4653.52
+margin_bottom = 2744.8
 rect_scale = Vector2( 0.14, 0.14 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -37,10 +37,10 @@ __meta__ = {
 }
 
 [node name="LeagueBtn" type="Button" parent="."]
-margin_left = 150.691
-margin_top = 416.351
-margin_right = 379.691
-margin_bottom = 526.351
+margin_left = 446.379
+margin_top = 684.144
+margin_right = 675.379
+margin_bottom = 794.144
 custom_fonts/font = SubResource( 1 )
 text = "League"
 __meta__ = {
@@ -48,10 +48,10 @@ __meta__ = {
 }
 
 [node name="UpgradeBtn" type="Button" parent="."]
-margin_left = 571.741
-margin_top = 407.309
-margin_right = 795.741
-margin_bottom = 515.309
+margin_left = 1338.86
+margin_top = 697.418
+margin_right = 1562.86
+margin_bottom = 805.418
 custom_fonts/font = SubResource( 2 )
 text = "Upgrade"
 __meta__ = {

@@ -22,6 +22,8 @@ var input = null
 var actionQueue = []
 
 func _ready():
+	OS.window_fullscreen = true
+	
 	ai = AI.instance()
 	command = Command.new()
 	mainMenu = MainMenu.instance()
