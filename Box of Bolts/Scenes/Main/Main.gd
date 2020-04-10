@@ -22,7 +22,11 @@ var input = null
 var actionQueue = []
 
 func _ready():
-	OS.window_fullscreen = true
+	#OS.window_fullscreen = true
+	
+	#var screensize = get_viewport_rect().size
+	var viewport = get_viewport()
+	viewport.set_size_override(true, OS.get_window_size())
 	
 	ai = AI.instance()
 	command = Command.new()

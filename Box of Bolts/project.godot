@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Command/LPunchCommand.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Mech",
 "language": "GDScript",
 "path": "res://Scenes/Mech/Mech.gd"
@@ -62,10 +62,10 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
-window/size/resizable=false
-window/size/fullscreen=true
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [input]
 

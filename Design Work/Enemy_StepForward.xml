@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Enemy_StepForward.png">
+	<!-- Created with Adobe Animate version 20.0.2.22168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Enemy_StepForward0000" x="0" y="0" width="249" height="273" pivotX="20.5" pivotY="9.8"/>
+	<SubTexture name="Enemy_StepForward0001" x="249" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0002" x="498" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0003" x="747" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0004" x="996" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0005" x="1245" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0006" x="1494" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0007" x="1743" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0008" x="1992" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0009" x="2241" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0010" x="2490" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0011" x="2739" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0012" x="2988" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0013" x="3237" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0014" x="3486" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0015" x="3735" y="0" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0016" x="0" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0017" x="249" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0018" x="498" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0019" x="747" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0020" x="996" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0021" x="1245" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0022" x="1494" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0023" x="1743" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0024" x="1992" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0025" x="2241" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0026" x="2490" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0027" x="2739" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0028" x="2988" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0029" x="3237" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0030" x="3486" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0031" x="3735" y="273" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0032" x="0" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0033" x="249" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0034" x="498" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0035" x="747" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0036" x="996" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0037" x="1245" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0038" x="1494" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0039" x="1743" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0040" x="1992" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0041" x="2241" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0042" x="2490" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0043" x="2739" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0044" x="2988" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0045" x="3237" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0046" x="3486" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0047" x="3735" y="546" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0048" x="0" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0049" x="249" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0050" x="498" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0051" x="747" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0052" x="996" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0053" x="1245" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0054" x="1494" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0055" x="1743" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0056" x="1992" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0057" x="2241" y="819" width="249" height="273"/>
+	<SubTexture name="Enemy_StepForward0058" x="2490" y="819" width="249" height="273"/>
+</TextureAtlas>

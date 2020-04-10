@@ -4,6 +4,6 @@ class_name StepForwardCommand
 	
 func execute(mech):
 	if(mech.get_parent()):
-		#mech.step_back()
+		mech.stepForward()
 		print("DEBUG: " + mech.name	+ ":STEPFORWARD")
 	
