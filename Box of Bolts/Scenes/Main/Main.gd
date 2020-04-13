@@ -33,6 +33,9 @@ func _ready():
 	viewScalingFactor = Vector2(viewport.size.x/defaultView.x, viewport.size.x/defaultView.x)
 	
 	$Camera.make_current()
+	$Camera.set_position(Vector2(0, 200))
+	#$Camera.set_position(Vector2(viewport.size.x/2, viewport.size.y/2 + ((720*viewScalingFactor.y) - viewport.size.y)))
+	print(viewport.size.y/2 + ((720*viewScalingFactor.y) - viewport.size.y))
 	
 	print("DEBUG: Viewport size = " + str(viewport.size.x) + ", " + str(viewport.size.y) + ". Scale factor is " + str(viewScalingFactor))
 	
@@ -87,6 +90,10 @@ func get_player_reference():
 func get_enemy_reference():
 	return enemy
 
+func arena_camera():
+	$Camera.set_position(Vector2(viewport.size.x/2, viewport.size.y/2 + int(((720*viewScalingFactor.y) - viewport.size.y))))
+	print("DEBUG: Moving camera to " + str(Vector2(viewport.size.x/2, viewport.size.y/2 + int(((720*viewScalingFactor.y) - viewport.size.y)))))
+	pass
 
 func _process(delta):
 	

@@ -16,9 +16,9 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -349.0
+margin_left = 2.0
 margin_top = -9.0
-margin_right = 1728.0
+margin_right = 1284.0
 margin_bottom = 726.0
 color = Color( 0.262745, 0.376471, 0.0588235, 1 )
 __meta__ = {
