@@ -10,6 +10,8 @@ func _ready():
 	screenpos = get_viewport_rect().size
 	position.x = screenpos.x/4
 	pass
+		
+	
 	
 func write_health():
 	print(self.health)

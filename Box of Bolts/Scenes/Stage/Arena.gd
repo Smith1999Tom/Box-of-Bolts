@@ -6,12 +6,15 @@ var player = null
 var enemy = null
 
 func _ready():
+	
+	
 	pass
 	
 func init(mainRef):
 	main = mainRef
 	
 	player = main.get_player_reference()
+	player.scale = main.viewScalingFactor
 	enemy = main.get_enemy_reference()
 	
 	call_deferred("add_child", player)

@@ -914,7 +914,6 @@ z_index = 10
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -5.87268, -132.134 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 178 )
 animation = "StepForward"

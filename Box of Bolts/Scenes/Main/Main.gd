@@ -9,6 +9,8 @@ const Player = preload("res://Scenes/Player/Player.tscn")
 const Enemy = preload("res://Scenes/Enemy/Enemy.tscn")
 
 onready var root = get_tree().get_root()
+const defaultView = Vector2(1280, 720)
+var viewScalingFactor = Vector2(1, 1)
 
 var ai = null
 var command = null
@@ -18,6 +20,7 @@ var mainMenu = null
 var player = null
 var enemy = null
 var input = null
+var viewport
 
 var actionQueue = []
 
@@ -25,8 +28,13 @@ func _ready():
 	#OS.window_fullscreen = true
 	
 	#var screensize = get_viewport_rect().size
-	var viewport = get_viewport()
-	viewport.set_size_override(true, OS.get_window_size())
+	viewport = get_viewport()
+	#viewport.set_size_override(true, OS.get_window_size())
+	viewScalingFactor = Vector2(viewport.size.x/defaultView.x, viewport.size.x/defaultView.x)
+	
+	$Camera.make_current()
+	
+	print("DEBUG: Viewport size = " + str(viewport.size.x) + ", " + str(viewport.size.y) + ". Scale factor is " + str(viewScalingFactor))
 	
 	ai = AI.instance()
 	command = Command.new()
