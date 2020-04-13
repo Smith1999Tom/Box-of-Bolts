@@ -18,6 +18,11 @@ func _ready():
 	self.make_current()
 	pass # Replace with function body.
 
+func move_camera_to_top():
+	self.set_position(Vector2(viewport.size.x/2, viewport.size.y/2))
+	print("DEBUG: Moving camera to 0, 0")
+
+
 #Moves the camera to the bottom of the screen, so that the top is cut off instead of the bottom
 #This is done so that in the fight, the sky is cut off instead of the bottom of the mechs
 func move_camera_to_bottom():

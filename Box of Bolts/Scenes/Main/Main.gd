@@ -26,7 +26,7 @@ var actionQueue = []
 
 func _ready():
 	
-	camera.move_camera_to_bottom()
+	camera.move_camera_to_top()
 	
 	ai = AI.instance()
 	command = Command.new()
@@ -81,6 +81,12 @@ func get_enemy_reference():
 	
 func get_view_scaling_factor():
 	return camera.viewScalingFactor
+	
+func move_camera_to_bottom():
+	camera.move_camera_to_bottom()
+	
+func move_camera_to_top():
+	camera.move_camera_to_top()
 
 
 

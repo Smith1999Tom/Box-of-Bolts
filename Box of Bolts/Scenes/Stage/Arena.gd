@@ -7,6 +7,7 @@ var enemy = null
 
 func _ready():
 	self.scale = main.get_view_scaling_factor()
+	main.move_camera_to_bottom()
 	
 	pass
 	
