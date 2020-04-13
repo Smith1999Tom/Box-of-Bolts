@@ -9,8 +9,7 @@ const Player = preload("res://Scenes/Player/Player.tscn")
 const Enemy = preload("res://Scenes/Enemy/Enemy.tscn")
 
 onready var root = get_tree().get_root()
-const defaultView = Vector2(1280, 720)
-var viewScalingFactor = Vector2(1, 1)
+
 
 var ai = null
 var command = null
@@ -20,24 +19,14 @@ var mainMenu = null
 var player = null
 var enemy = null
 var input = null
-var viewport
+
+onready var camera = $Camera
 
 var actionQueue = []
 
 func _ready():
-	#OS.window_fullscreen = true
 	
-	#var screensize = get_viewport_rect().size
-	viewport = get_viewport()
-	#viewport.set_size_override(true, OS.get_window_size())
-	viewScalingFactor = Vector2(viewport.size.x/defaultView.x, viewport.size.x/defaultView.x)
-	
-	$Camera.make_current()
-	$Camera.set_position(Vector2(0, 200))
-	#$Camera.set_position(Vector2(viewport.size.x/2, viewport.size.y/2 + ((720*viewScalingFactor.y) - viewport.size.y)))
-	print(viewport.size.y/2 + ((720*viewScalingFactor.y) - viewport.size.y))
-	
-	print("DEBUG: Viewport size = " + str(viewport.size.x) + ", " + str(viewport.size.y) + ". Scale factor is " + str(viewScalingFactor))
+	camera.move_camera_to_bottom()
 	
 	ai = AI.instance()
 	command = Command.new()
@@ -89,11 +78,11 @@ func get_player_reference():
 	
 func get_enemy_reference():
 	return enemy
+	
+func get_view_scaling_factor():
+	return camera.viewScalingFactor
 
-func arena_camera():
-	$Camera.set_position(Vector2(viewport.size.x/2, viewport.size.y/2 + int(((720*viewScalingFactor.y) - viewport.size.y))))
-	print("DEBUG: Moving camera to " + str(Vector2(viewport.size.x/2, viewport.size.y/2 + int(((720*viewScalingFactor.y) - viewport.size.y)))))
-	pass
+
 
 func _process(delta):
 	

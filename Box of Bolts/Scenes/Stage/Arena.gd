@@ -6,8 +6,7 @@ var player = null
 var enemy = null
 
 func _ready():
-	self.scale = main.viewScalingFactor
-	main.arena_camera()
+	self.scale = main.get_view_scaling_factor()
 	
 	pass
 	
