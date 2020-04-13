@@ -17,6 +17,7 @@ func _ready():
 	connect("changeMenu_Main", main, "_on_changeMenu_Main")
 	stage = Stage.instance()
 	self.scale = main.get_view_scaling_factor()
+	$Background.init(self.scale)
 	
 
 func init(MainRef, PlayerRef):
