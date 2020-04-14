@@ -909,7 +909,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="Node2D"]
-position = Vector2( 278.798, 607.596 )
+position = Vector2( 264.116, 478.398 )
 z_index = 10
 script = ExtResource( 5 )
 
