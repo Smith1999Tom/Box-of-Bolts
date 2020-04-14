@@ -1,6 +1,6 @@
 extends Mech
 
-export var stepForwardDistance = 100
+export var stepForwardDistance = 1280*0.125
 var screenpos
 var state = "Idle"
 
@@ -8,7 +8,7 @@ func _ready():
 	$AnimatedSprite.play("Idle")
 	write_health()
 	screenpos = get_viewport_rect().size
-	position.x = screenpos.x/4
+	position.x = 1280*0.25
 	pass
 		
 	
