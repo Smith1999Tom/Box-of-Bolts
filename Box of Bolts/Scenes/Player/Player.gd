@@ -2,6 +2,7 @@ extends Mech
 
 export var stepForwardDistance = 1280*0.125
 export var stepForwardSpeed = 1.0
+export var stepBackwardSpeed = 0.7
 
 var screenpos
 var state = "Idle"
@@ -19,6 +20,8 @@ func _ready():
 func _process(delta):
 	if(state == "StepForward"):
 		self.position.x += (stepForwardDistance * delta * stepForwardSpeed)
+	if(state == "StepBackward"):
+		self.position.x -= (stepForwardDistance * delta * stepBackwardSpeed)
 	pass	
 	
 func write_health():
@@ -32,6 +35,11 @@ func stepForward():
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
 	#self.position.x += stepForwardDistance
+	
+func stepBackward():
+	$AnimatedSprite.speed_scale = stepBackwardSpeed*2
+	$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
+	state = "StepBackward"
 
 
 func _on_AnimatedSprite_animation_finished():
