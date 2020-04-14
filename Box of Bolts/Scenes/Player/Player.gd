@@ -7,6 +7,9 @@ export var stepBackwardSpeed = 0.7
 var screenpos
 var state = "Idle"
 
+signal slideLeft
+signal slideRight
+
 
 func _ready():
 	$AnimatedSprite.play("Idle")
@@ -40,7 +43,10 @@ func stepBackward():
 	$AnimatedSprite.speed_scale = stepBackwardSpeed*2
 	$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
 	state = "StepBackward"
-
+	if(position.x <= 1280*0.25):
+		#camera.slide_left()
+		get_parent().slide_stage_left()
+		pass
 
 func _on_AnimatedSprite_animation_finished():
 	state = "Idle"
