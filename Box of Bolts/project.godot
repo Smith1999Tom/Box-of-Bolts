@@ -1,0 +1,85 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Command",
+"class": "BlockCommand",
+"language": "GDScript",
+"path": "res://Scenes/Command/BlockCommand.gd"
+}, {
+"base": "Node",
+"class": "Command",
+"language": "GDScript",
+"path": "res://Scenes/Command/Command.gd"
+}, {
+"base": "Command",
+"class": "LPunchCommand",
+"language": "GDScript",
+"path": "res://Scenes/Command/LPunchCommand.gd"
+}, {
+"base": "Node2D",
+"class": "Mech",
+"language": "GDScript",
+"path": "res://Scenes/Mech/Mech.gd"
+}, {
+"base": "Command",
+"class": "RPunchCommand",
+"language": "GDScript",
+"path": "res://Scenes/Command/RPunchCommand.gd"
+}, {
+"base": "Command",
+"class": "StepBackCommand",
+"language": "GDScript",
+"path": "res://Scenes/Command/StepBackCommand.gd"
+}, {
+"base": "Command",
+"class": "StepForwardCommand",
+"language": "GDScript",
+"path": "res://Scenes/Command/StepForwardCommand.gd"
+} ]
+_global_script_class_icons={
+"BlockCommand": "",
+"Command": "",
+"LPunchCommand": "",
+"Mech": "",
+"RPunchCommand": "",
+"StepBackCommand": "",
+"StepForwardCommand": ""
+}
+
+[application]
+
+config/name="Box of Bolts"
+run/main_scene="res://Scenes/Main/Main.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/aspect="expand"
+
+[input]
+
+ui_select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Stage/Arena.gd" type="Script" id=1]
+[ext_resource path="res://Art/Level1-01.png" type="Texture" id=2]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 636.499
+margin_top = 231.709
+margin_right = 646.499
+margin_bottom = 533.709
+color = Color( 0.156863, 0.321569, 0.819608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 274.333
+margin_top = 236.983
+margin_right = 284.333
+margin_bottom = 538.983
+color = Color( 0.156863, 0.321569, 0.819608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 977.0
+margin_top = 247.0
+margin_right = 1001.0
+margin_bottom = 528.0
+color = Color( 0.156863, 0.321569, 0.819608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 1252.63
+margin_top = 692.585
+margin_right = 1276.63
+margin_bottom = 716.585
+color = Color( 0.156863, 0.321569, 0.819608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+margin_left = 8.34302
+margin_top = 2.79956
+margin_right = 32.343
+margin_bottom = 26.7996
+color = Color( 0.156863, 0.321569, 0.819608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
