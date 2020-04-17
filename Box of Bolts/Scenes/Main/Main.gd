@@ -10,7 +10,6 @@ const Enemy = preload("res://Scenes/Enemy/Enemy.tscn")
 
 onready var root = get_tree().get_root()
 
-
 var ai = null
 var command = null
 var upgradeMenu = null
@@ -25,7 +24,6 @@ onready var camera = $Camera
 var actionQueue = []
 
 func _ready():
-	
 	camera.move_camera_to_top()
 	
 	ai = AI.instance()
@@ -45,21 +43,11 @@ func _ready():
 	ai.init(self, command, enemy)
 	input.init()
 	
-	
-	
 	root.call_deferred("add_child", ai)
 	root.call_deferred("add_child", command)
 	root.call_deferred("add_child", mainMenu)
 	#root.call_deferred("add_child", upgradeMenu)
 	
-	
-	
-	
-	
-	
-	
-	
-
 
 func _on_changeMenu_League():
 	root.call_deferred("add_child", leagueMenu)
@@ -91,15 +79,9 @@ func move_camera_to_top():
 
 
 func _process(delta):
-	
-	
 	var c : Command = input.handleInput(get_global_mouse_position())
-	
 	if(c):
 		c.execute(player)
-		
-	pass
-
 
 
 class InputHandler:
@@ -119,30 +101,17 @@ class InputHandler:
 	
 	
 	func _ready():
-		#buttonLeft = Command.StepBackCommand.new()
 		pass
 		
 	func init():
-		
-		#buttonLeft = StepBackCommand.new()
-		#buttonRight = RPunchCommand.new()
-		
 		tapLeft = LPunchCommand.new()
 		tapRight = RPunchCommand.new()
 		tapBoth = BlockCommand.new()
 		swipeLeft = StepBackCommand.new()
 		swipeRight = StepForwardCommand.new()
 	
-	
 	func handleInput(mousePos):
 		var action
-#		if(Input.is_action_just_pressed("ui_left")):
-#			#print("left")
-#			return buttonLeft
-#		if(Input.is_action_just_pressed("ui_right")):
-#			#print("left")
-#			return buttonRight
-		
 		if(Input.is_action_just_pressed("click")):
 			swipeStart = mousePos
 		if(Input.is_action_just_released("click")):
@@ -154,9 +123,6 @@ class InputHandler:
 			else:
 				return tapRight
 				
-			
-			
-	
 	#Swipe detection taken from https://godotengine.org/qa/19386/how-to-detect-swipe-using-3-0		
 	func calculateSwipe(swipeEnd):
 		if(swipeStart == null):
@@ -169,10 +135,3 @@ class InputHandler:
 				return swipeRight
 			else:
 				return swipeLeft
-		
-
-		
-		
-	
-		
-	
