@@ -7,6 +7,8 @@ export var stepBackwardSpeed = 0.7
 var screenpos
 var state = "Idle"
 onready var arena = get_parent()
+var scaleFactor = 1
+
 
 signal slideLeft
 signal slideRight
@@ -19,13 +21,17 @@ func _ready():
 	position.x = 1280*0.25
 	
 	pass
+	
+func init(aScale):
+	scaleFactor = aScale
+	pass
 		
 	
 func _process(delta):
 	if(state == "StepForward"):
-		self.position.x += (stepForwardDistance * delta * stepForwardSpeed)
+		self.position.x += ((stepForwardDistance * delta * stepForwardSpeed)/ scaleFactor)
 	if(state == "StepBackward"):
-		self.position.x -= (stepForwardDistance * delta * stepBackwardSpeed)
+		self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed) / scaleFactor)
 	pass	
 	
 func write_health():

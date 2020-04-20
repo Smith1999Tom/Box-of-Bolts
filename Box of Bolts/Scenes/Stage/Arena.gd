@@ -24,6 +24,11 @@ func _ready():
 	
 func _process(delta):
 	self.position.x += velocity * delta * main.get_view_scaling_factor().x
+	#$Farm_Layer_1.position.x += velocity * delta * main.get_view_scaling_factor().x
+	$Farm_Layer_2.position.x -= velocity * delta * 0.6
+	$Farm_Layer_3.position.x -= velocity * delta * 0.8
+	$Farm_Layer_4.position.x += velocity * delta * 0
+	pass
 	
 #Set initial values
 func init(mainRef):
@@ -33,6 +38,9 @@ func init(mainRef):
 	
 	call_deferred("add_child", player)
 	call_deferred("add_child", enemy)
+	
+	player.init(scaleFactor)
+	#enemy.init(scaleFactor)
 	
 func slide_stage_left():
 	velocity = 1280 * 0.25 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.
