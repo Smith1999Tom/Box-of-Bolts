@@ -2,26 +2,45 @@ extends Node2D
 
 class_name Mech
 
-var health = null
-var energy
+export var stepForwardDistance = 1280*0.125
+export var stepForwardSpeed = 1.0
+export var stepBackwardSpeed = 0.7
+var direction = 1
 
+var screenpos
+var state = "Idle"
+onready var arena = get_parent()
+var scaleFactor = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	if(health == null):
-		health = 100
-	energy = 100
-	pass # Replace with function body.
+var enemy
 
-func set_health(aHealth):
-	health = aHealth
+func ready():
+	$AnimatedSprite.play("Idle")
 	
-func set_energy(aEnergy):
-	energy = aEnergy
-	
-func step_back():
-	print("Stepping back")
+func init(aScale, enemyRef):
+	scaleFactor = aScale
+	enemy = enemyRef
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if(state == "StepForward"):
+		self.position.x += ((stepForwardDistance * delta * stepForwardSpeed * direction)/ scaleFactor)
+	if(state == "StepBackward"):
+		self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed * direction) / scaleFactor)
+	pass	
+
+func stepForward():
+	$AnimatedSprite.speed_scale = stepForwardSpeed*2
+	$AnimatedSprite.play("StepForward")
+	state = "StepForward"
+
+
+func _on_AnimatedSprite_animation_finished():
+	#print("DEBUG animation stop")
+	state = "Idle"
+	$AnimatedSprite.speed_scale = 1
+	$AnimatedSprite.play("Idle")
+	
+func stepBackward():
+	print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")
+	pass

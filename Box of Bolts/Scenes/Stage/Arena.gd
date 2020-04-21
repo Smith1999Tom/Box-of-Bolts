@@ -40,11 +40,10 @@ func init(mainRef):
 	call_deferred("add_child", enemy)
 	
 	player.init(scaleFactor, enemy)
-	#enemy.init(scaleFactor)
+	enemy.init(scaleFactor, player)
 	
 func slide_stage_left():
 	velocity = 1280 * 0.25 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.
-	#TODO change distance to be equal to player step
 	#print("DEBUG: STAGE POS START - " + str(self.position.x))
 	_start_timer()
 	

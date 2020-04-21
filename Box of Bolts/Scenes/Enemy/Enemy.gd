@@ -1,18 +1,27 @@
 extends Mech
-var screenpos
 
 func _ready():
-	$AnimatedSprite.play()
+	$AnimatedSprite.play("Idle")
 	$AnimatedSprite.set_flip_h(true)
-	write_health()
 	screenpos = get_viewport_rect().size
 	#position.x = screenpos.x*0.75
 	position.x = 1280*0.75
+	direction = -1
+	stepForward()
 	pass
+
+func stepBackward():
+	var shouldMove = false
 	
-func write_health():
-	print(self.health)
+	if(position.x <= arena.rightBoundary - 400):
+		shouldMove = true
+	elif((position.x >= arena.rightBoundary - 400) && (enemy.position.x >= arena.leftBoundary + 400)):
+		arena.slide_stage_left()
+		shouldMove = true
 	
-func moveForward():
-	$AnimatedSprite.play("StepForward")
+	if(shouldMove):
+		$AnimatedSprite.speed_scale = stepBackwardSpeed*2
+		$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
+		state = "StepBackward"
+		
 
