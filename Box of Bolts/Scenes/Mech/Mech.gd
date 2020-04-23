@@ -37,9 +37,12 @@ func stepForward():
 
 func _on_AnimatedSprite_animation_finished():
 	#print("DEBUG animation stop")
+	if(state == "StepBackward"):
+		arena.stop_stage()
 	state = "Idle"
 	$AnimatedSprite.speed_scale = 1
 	$AnimatedSprite.play("Idle")
+	
 	
 func stepBackward():
 	print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")

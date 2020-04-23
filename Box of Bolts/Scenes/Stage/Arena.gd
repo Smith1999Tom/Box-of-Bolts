@@ -43,13 +43,26 @@ func init(mainRef):
 	enemy.init(scaleFactor, player)
 	
 func slide_stage_left():
-	velocity = 1280 * 0.25 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.
+	velocity = 1280 * 0.125 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.
 	#print("DEBUG: STAGE POS START - " + str(self.position.x))
-	_start_timer()
+	#_start_timer()
 	
 func slide_stage_right():
-	velocity = 1280 * 0.25 * -1
+	velocity = 1280 * 0.125 * -1
 	_start_timer()
+	
+	#Movement of player
+	#self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed * direction) / scaleFactor)
+
+func stop_stage():
+	if(velocity != 0):
+		velocity = 0
+		var difference = self.position.x - oldpos
+		leftBoundary -= difference/main.get_view_scaling_factor().x
+		rightBoundary -= difference/main.get_view_scaling_factor().x
+	pass
+
+
 
 #Starts a timer for moving the stage left/right
 func _start_timer():
@@ -62,8 +75,5 @@ func _start_timer():
 	oldpos = self.position.x
 	
 func _timeout():
-	velocity = 0
-	var difference = self.position.x - oldpos
-	leftBoundary -= difference/main.get_view_scaling_factor().x
-	rightBoundary -= difference/main.get_view_scaling_factor().x
+	stop_stage()
 	#print("DEBUG: STAGE POS END - " + str(self.position.x))
