@@ -34,15 +34,30 @@ func stepForward():
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
 
+func lPunch():
+	$AnimatedSprite.play("LPunch")
+	state = "LeftPunch"
+
 
 func _on_AnimatedSprite_animation_finished():
 	#print("DEBUG animation stop")
+	if(state == "Block"):
+		return
 	if(state == "StepBackward"):
 		arena.stop_stage()
 	state = "Idle"
 	$AnimatedSprite.speed_scale = 1
 	$AnimatedSprite.play("Idle")
 	
+func block():
+	print("DEBUG: " + self.name + " is blocking")
+	state = "Block"
+	$AnimatedSprite.play("Block")
+	
+func end_block():
+	print("DEBUG: " + self.name + " has stopped blocking")
+	state = "Idle"
+	$AnimatedSprite.play("Idle")
 	
 func stepBackward():
 	print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")

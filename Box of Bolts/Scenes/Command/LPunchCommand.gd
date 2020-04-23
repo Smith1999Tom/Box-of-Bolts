@@ -4,6 +4,6 @@ class_name LPunchCommand
 	
 func execute(mech):
 	if(mech.get_parent()):
-		#mech.lPunch()
+		mech.lPunch()
 		print("DEBUG: " + mech.name	+ ":LPUNCH")
 	

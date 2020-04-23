@@ -49,6 +49,18 @@ func _ready():
 	#root.call_deferred("add_child", upgradeMenu)
 	
 
+func _input(event):
+	if event.is_action_pressed("click"):
+		print("tap tap at " + str(event))
+	if event is InputEventScreenTouch:
+		if event.pressed == true:
+			print("tap tap phone")
+		else:
+			print("tap tap phone release")
+	actionQueue.append(input.handleEvent(event))
+		
+
+
 func _on_changeMenu_League():
 	root.call_deferred("add_child", leagueMenu)
 	pass
@@ -79,9 +91,14 @@ func move_camera_to_top():
 
 
 func _process(delta):
-	var c : Command = input.handleInput(get_global_mouse_position())
-	if(c):
-		c.execute(player)
+#	var c : Command = input.handleInput(get_global_mouse_position())
+#	if(c):
+#		c.execute(player)
+	for action in actionQueue:
+		if(action):
+			action.execute(player)
+	actionQueue.clear()
+	pass
 
 
 class InputHandler:
@@ -98,6 +115,8 @@ class InputHandler:
 	#Swipe detection taken from https://godotengine.org/qa/19386/how-to-detect-swipe-using-3-0
 	var swipeStart = null
 	var minimumDrag = 100
+	
+	var tapQueue = []
 	
 	
 	func _ready():
@@ -122,6 +141,36 @@ class InputHandler:
 				return tapLeft
 			else:
 				return tapRight
+				
+	func handleEvent(event):
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				tapQueue.append(event)
+			else:
+				if tapQueue.size() == 1:
+					var tap = tapQueue.back()
+					tapQueue.clear()
+					swipeStart = tap.position
+					var swipe = calculateSwipe(event.position)
+					if(swipe) :
+						return swipe
+					if(tap.position.x > 640):
+						return tapRight
+					else:
+						return tapLeft
+				
+				tapBoth.block = false
+				tapQueue.clear()
+				return tapBoth
+			
+			if tapQueue.size() > 1:
+				print("Two taps")
+				for item in tapQueue:
+					print("Tap " + str(item.index) + " at " + str(item.position))
+					tapBoth.block = true
+					return tapBoth
+		pass
+				
 				
 	#Swipe detection taken from https://godotengine.org/qa/19386/how-to-detect-swipe-using-3-0		
 	func calculateSwipe(swipeEnd):
