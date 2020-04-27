@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Player_LPunch.png">
+	<!-- Created with Adobe Animate version 20.0.3.25487 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Symbol 10000" x="0" y="0" width="290" height="262" pivotX="3" pivotY="7.3"/>
+	<SubTexture name="Symbol 10001" x="290" y="0" width="290" height="262"/>
+	<SubTexture name="Symbol 10002" x="580" y="0" width="290" height="262"/>
+	<SubTexture name="Symbol 10003" x="870" y="0" width="290" height="262"/>
+	<SubTexture name="Symbol 10004" x="1160" y="0" width="290" height="262"/>
+	<SubTexture name="Symbol 10005" x="1450" y="0" width="290" height="262"/>
+	<SubTexture name="Symbol 10006" x="1740" y="0" width="290" height="262"/>
+	<SubTexture name="Symbol 10007" x="0" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10008" x="290" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10009" x="580" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10010" x="870" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10011" x="1160" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10012" x="1450" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10013" x="1740" y="262" width="290" height="262"/>
+	<SubTexture name="Symbol 10014" x="0" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10015" x="290" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10016" x="580" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10017" x="870" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10018" x="1160" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10019" x="1450" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10020" x="1740" y="524" width="290" height="262"/>
+	<SubTexture name="Symbol 10021" x="0" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10022" x="290" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10023" x="580" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10024" x="870" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10025" x="1160" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10026" x="1450" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10027" x="1740" y="786" width="290" height="262"/>
+	<SubTexture name="Symbol 10028" x="0" y="1048" width="290" height="262"/>
+	<SubTexture name="Symbol 10029" x="290" y="1048" width="290" height="262"/>
+</TextureAtlas>
