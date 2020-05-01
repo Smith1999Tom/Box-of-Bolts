@@ -16,8 +16,7 @@ func _ready():
 	
 
 
-func rPunch():
-	$AnimatedSprite.play("RPunch")
+
 	
 	
 

@@ -41,6 +41,7 @@ func init(mainRef):
 	
 	player.init(scaleFactor, enemy)
 	enemy.init(scaleFactor, player)
+
 	
 func slide_stage_left():
 	velocity = 1280 * 0.125 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.

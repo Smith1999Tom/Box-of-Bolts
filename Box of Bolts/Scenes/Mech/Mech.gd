@@ -38,9 +38,12 @@ func lPunch():
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
 
+func rPunch():
+	$AnimatedSprite.play("RPunch")
+	state = "RightPunch"
 
 func _on_AnimatedSprite_animation_finished():
-	#print("DEBUG animation stop")
+	print("DEBUG: " + self.name + " animation stop")
 	if(state == "Block"):
 		return
 	if(state == "StepBackward"):

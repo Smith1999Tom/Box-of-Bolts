@@ -18,6 +18,7 @@ var mainMenu = null
 var player = null
 var enemy = null
 var input = null
+var mobile = false
 
 onready var camera = $Camera
 
@@ -50,13 +51,19 @@ func _ready():
 	
 
 func _input(event):
-	if event.is_action_pressed("click"):
-		print("tap tap at " + str(event))
 	if event is InputEventScreenTouch:
+		mobile = true
 		if event.pressed == true:
 			print("tap tap phone")
 		else:
 			print("tap tap phone release")
+	if event is InputEventMouseButton:
+		if(mobile):
+			return
+		if event.pressed == true:
+			print("tap tap mouse")
+		else:
+			print("tap tap mouse release")
 	actionQueue.append(input.handleEvent(event))
 		
 
@@ -178,7 +185,8 @@ class InputHandler:
 		if tapQueue.size() > 1:
 			print("Two taps")
 			for item in tapQueue:
-				print("Tap " + str(item.index) + " at " + str(item.position))
+				if item is InputEventScreenTouch:
+					print("Tap " + str(item.index) + " at " + str(item.position))
 				tapBoth.block = true
 				return tapBoth
 	

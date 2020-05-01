@@ -1,5 +1,9 @@
 extends Mech
 
+signal getNewCommand
+
+var ai
+
 func _ready():
 	$AnimatedSprite.play("Idle")
 	$AnimatedSprite.set_flip_h(true)
@@ -7,7 +11,10 @@ func _ready():
 	#position.x = screenpos.x*0.75
 	position.x = 1280*0.75
 	direction = -1
-	stepForward()
+	ai = arena.main.ai
+	self.connect("getNewCommand", ai, "generateCommand")
+	emit_signal("getNewCommand")
+	
 	pass
 
 func stepBackward():
@@ -24,4 +31,8 @@ func stepBackward():
 		$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
 		state = "StepBackward"
 		
+func _on_AnimatedSprite_animation_finished():
+	._on_AnimatedSprite_animation_finished()
+	emit_signal("getNewCommand")
+	pass
 
