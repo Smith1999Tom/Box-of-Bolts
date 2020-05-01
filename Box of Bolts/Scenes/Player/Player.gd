@@ -11,6 +11,7 @@ func _ready():
 	#$AnimatedSprite.play("Idle")
 	screenpos = get_viewport_rect().size
 	position.x = 1280*0.25
+	oldpos = position
 	pass
 	
 	
@@ -26,9 +27,9 @@ func _ready():
 func stepBackward():
 	var shouldMove = false
 	
-	if(position.x >= arena.leftBoundary + 400):
+	if(position.x > arena.leftBoundary + 320):
 		shouldMove = true
-	elif((position.x <= arena.leftBoundary + 400) && (enemy.position.x <= arena.rightBoundary - 400)):
+	elif((position.x <= arena.leftBoundary + 320) && (enemy.position.x < arena.rightBoundary - 320)):
 		arena.slide_stage_left()
 		shouldMove = true
 	

@@ -4,6 +4,7 @@ var main = null
 var command = null
 var enemy = null
 export var randomAI = true
+export var keyboardAI = false
 
 var rng = RandomNumberGenerator.new()
 
@@ -40,9 +41,29 @@ func init(mainRef, commandRef, enemyRef):
 
 
 func generateCommand():
+	if(keyboardAI):
+		return
 	if(randomAI):
 		var command = getRandomCommand()
 		command.execute(enemy)
+	pass
+	
+func generateCommandFromEvent(event):
+	if event is InputEventKey:
+		var keyPress = OS.get_scancode_string(event.scancode)
+		print("Generating command from " + keyPress)
+		match keyPress:
+			"Q":
+				tapLeft.execute(enemy)
+			"W":
+				tapBoth.execute(enemy)
+			"E":
+				tapRight.execute(enemy)
+			"A":
+				swipeLeft.execute(enemy)
+			"S":
+				swipeRight.execute(enemy)
+		
 	pass
 	
 func getRandomCommand():

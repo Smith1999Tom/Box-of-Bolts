@@ -2,10 +2,11 @@ extends Node2D
 
 class_name Mech
 
-export var stepForwardDistance = 1280*0.125
+export var stepForwardDistance = 160
 export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 var direction = 1
+var oldpos = Vector2(0,0)
 
 var screenpos
 var state = "Idle"
@@ -46,7 +47,12 @@ func _on_AnimatedSprite_animation_finished():
 	print("DEBUG: " + self.name + " animation stop")
 	if(state == "Block"):
 		return
+	if(state == "StepForward"):
+		position.x = oldpos.x + (stepForwardDistance * direction)
+		oldpos.x = position.x
 	if(state == "StepBackward"):
+		position.x = oldpos.x - (stepForwardDistance * direction)
+		oldpos.x = position.x
 		arena.stop_stage()
 	state = "Idle"
 	$AnimatedSprite.speed_scale = 1

@@ -10,6 +10,7 @@ func _ready():
 	screenpos = get_viewport_rect().size
 	#position.x = screenpos.x*0.75
 	position.x = 1280*0.75
+	oldpos = position
 	direction = -1
 	ai = arena.main.ai
 	self.connect("getNewCommand", ai, "generateCommand")
@@ -23,7 +24,7 @@ func stepBackward():
 	if(position.x <= arena.rightBoundary - 400):
 		shouldMove = true
 	elif((position.x >= arena.rightBoundary - 400) && (enemy.position.x >= arena.leftBoundary + 400)):
-		arena.slide_stage_left()
+		arena.slide_stage_right()
 		shouldMove = true
 	
 	if(shouldMove):

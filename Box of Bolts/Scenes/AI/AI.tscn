@@ -4,3 +4,5 @@
 
 [node name="AI" type="Node"]
 script = ExtResource( 1 )
+randomAI = false
+keyboardAI = true

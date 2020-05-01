@@ -9,6 +9,7 @@ var scaleFactor = 1.0
 
 #Used to slide the arena left and right to simulate camera movement
 var oldpos = 0
+var newpos = 0
 var velocity = 0.0
 #Left and right boundaries are arbitrary since they are affected by view scaling factor, whereas stage pos is not
 var leftBoundary = 0
@@ -45,22 +46,29 @@ func init(mainRef):
 	
 func slide_stage_left():
 	velocity = 1280 * 0.125 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.
-	#print("DEBUG: STAGE POS START - " + str(self.position.x))
-	#_start_timer()
+	newpos = oldpos + (player.stepForwardDistance * scaleFactor.x)
+	update_boundaries()
 	
 func slide_stage_right():
-	velocity = 1280 * 0.125 * -1
-	_start_timer()
+	velocity = 1280 * 0.125 * -1 * enemy.stepBackwardSpeed
+	newpos = oldpos - (player.stepForwardDistance * scaleFactor.x)
+	update_boundaries()
 	
 	#Movement of player
 	#self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed * direction) / scaleFactor)
 
+func update_boundaries():
+	var difference = newpos - oldpos
+	newpos = oldpos
+	leftBoundary -= difference/main.get_view_scaling_factor().x
+	rightBoundary -= difference/main.get_view_scaling_factor().x
+	leftBoundary = round(leftBoundary)
+	rightBoundary = round(rightBoundary)
+
 func stop_stage():
 	if(velocity != 0):
 		velocity = 0
-		var difference = self.position.x - oldpos
-		leftBoundary -= difference/main.get_view_scaling_factor().x
-		rightBoundary -= difference/main.get_view_scaling_factor().x
+		
 	pass
 
 

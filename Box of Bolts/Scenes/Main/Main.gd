@@ -18,6 +18,7 @@ var mainMenu = null
 var player = null
 var enemy = null
 var input = null
+
 var mobile = false
 
 onready var camera = $Camera
@@ -64,6 +65,13 @@ func _input(event):
 			print("tap tap mouse")
 		else:
 			print("tap tap mouse release")
+	if event is InputEventKey:
+		if ai.keyboardAI == true:
+			print("keypress")
+			ai.generateCommandFromEvent(event)
+		
+			
+			
 	actionQueue.append(input.handleEvent(event))
 		
 
