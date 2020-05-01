@@ -144,33 +144,44 @@ class InputHandler:
 				
 	func handleEvent(event):
 		if event is InputEventScreenTouch:
-			if event.pressed:
+			return handleTapEvent(event)
+		if event is InputEventMouseButton:
+			return handleTapEvent(event)
+		
+				
+	func handleTapEvent(event):
+		if event.pressed:
 				tapQueue.append(event)
-			else:
-				if tapQueue.size() == 1:
-					var tap = tapQueue.back()
-					tapQueue.clear()
-					swipeStart = tap.position
-					var swipe = calculateSwipe(event.position)
-					if(swipe) :
-						return swipe
+		else:
+			if tapQueue.size() == 1:
+				var tap = tapQueue.back()
+				tapQueue.clear()
+				swipeStart = tap.position
+				var swipe = calculateSwipe(event.position)
+				if(swipe) :
+					return swipe
+				if event is InputEventScreenTouch:
 					if(tap.position.x > 640):
 						return tapRight
 					else:
 						return tapLeft
-				
-				tapBoth.block = false
-				tapQueue.clear()
-				return tapBoth
+				elif event is InputEventMouseButton:
+					if(event.button_index == 1):
+						return tapLeft
+					elif(event.button_index == 2):
+						return tapRight
 			
-			if tapQueue.size() > 1:
-				print("Two taps")
-				for item in tapQueue:
-					print("Tap " + str(item.index) + " at " + str(item.position))
-					tapBoth.block = true
-					return tapBoth
-		pass
-				
+			tapBoth.block = false
+			tapQueue.clear()
+			return tapBoth
+		
+		if tapQueue.size() > 1:
+			print("Two taps")
+			for item in tapQueue:
+				print("Tap " + str(item.index) + " at " + str(item.position))
+				tapBoth.block = true
+				return tapBoth
+	
 				
 	#Swipe detection taken from https://godotengine.org/qa/19386/how-to-detect-swipe-using-3-0		
 	func calculateSwipe(swipeEnd):
