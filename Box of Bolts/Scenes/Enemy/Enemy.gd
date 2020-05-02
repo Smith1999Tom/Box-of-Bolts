@@ -5,6 +5,7 @@ signal getNewCommand
 var ai
 
 func _ready():
+	._ready()
 	$AnimatedSprite.play("Idle")
 	$AnimatedSprite.set_flip_h(true)
 	screenpos = get_viewport_rect().size

@@ -70,19 +70,3 @@ func stop_stage():
 		velocity = 0
 		
 	pass
-
-
-
-#Starts a timer for moving the stage left/right
-func _start_timer():
-	var timer = Timer.new()
-	timer.one_shot = true
-	add_child(timer)
-	timer.wait_time = 1.0
-	timer.start()
-	timer.connect("timeout", self, "_timeout")
-	oldpos = self.position.x
-	
-func _timeout():
-	stop_stage()
-	#print("DEBUG: STAGE POS END - " + str(self.position.x))

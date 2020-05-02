@@ -3,9 +3,7 @@ extends Mech
 
 
 func _ready():
-	stepForwardDistance = 1280*0.125
-	stepForwardSpeed = 1.0
-	stepBackwardSpeed = 0.7
+	._ready()
 	direction = 1
 	
 	#$AnimatedSprite.play("Idle")
