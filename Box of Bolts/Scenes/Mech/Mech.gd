@@ -55,7 +55,7 @@ func rPunch():
 
 func _on_AnimatedSprite_animation_finished():
 	print("DEBUG: " + self.name + " animation stop")
-	if(state == "Block"):
+	if(state == "Block" or state == "Hit"):
 		return
 	if(state == "StepForward"):
 		position.x = oldpos.x + (stepForwardDistance * direction)
@@ -82,6 +82,7 @@ func end_block():
 func getHit():
 	if(state != "Hit" && state != "Block"):
 		state = "Hit"
+		$AnimatedSprite.play("Hit")
 		print("DEBUG: " + self.name + " got hit")
 		var timer = Timer.new()
 		timer.one_shot = true
