@@ -23,6 +23,8 @@ func _ready():
 
 func lPunch():
 	.lPunch()
+	if(state != "Idle"):
+		return
 	$AnimatedSprite.offset = Vector2(20, 0)	
 
 	

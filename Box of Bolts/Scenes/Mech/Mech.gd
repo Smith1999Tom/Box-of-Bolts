@@ -42,16 +42,22 @@ func _process(delta):
 	pass	
 
 func stepForward():
+	if(state != "Idle"):
+		return
 	$AnimatedSprite.speed_scale = stepForwardSpeed*2
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
 
 func lPunch():
+	if(state != "Idle"):
+		return
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
 	
 
 func rPunch():
+	if(state != "Idle"):
+		return
 	$AnimatedSprite.play("RPunch")
 	state = "RightPunch"
 
@@ -72,6 +78,8 @@ func _on_AnimatedSprite_animation_finished():
 	$AnimatedSprite.play("Idle")
 	
 func block():
+	if(state != "Idle"):
+		return
 	print("DEBUG: " + self.name + " is blocking")
 	state = "Block"
 	$AnimatedSprite.play("Block")
