@@ -19,6 +19,10 @@ func _ready():
 	
 	pass
 
+func lPunch():
+	.lPunch()
+	$AnimatedSprite.offset = Vector2(-20, 0)	
+
 func stepBackward():
 	var shouldMove = false
 	

@@ -17,6 +17,9 @@ var commandList = []
 
 var numberOfCommands = 5
 
+var onCooldown = false
+var cooldownTimer = 1.0
+
 func _ready():
 	pass
 	
@@ -49,6 +52,9 @@ func generateCommand():
 	pass
 	
 func generateCommandFromEvent(event):
+	if onCooldown == true:
+		return
+	
 	if event is InputEventKey:
 		var keyPress = OS.get_scancode_string(event.scancode)
 		print("Generating command from " + keyPress)
@@ -56,6 +62,7 @@ func generateCommandFromEvent(event):
 			"Q":
 				tapLeft.execute(enemy)
 			"W":
+				tapBoth.block = !tapBoth.block
 				tapBoth.execute(enemy)
 			"E":
 				tapRight.execute(enemy)
@@ -64,6 +71,13 @@ func generateCommandFromEvent(event):
 			"S":
 				swipeRight.execute(enemy)
 		
+		onCooldown = true
+		var timer = Timer.new()
+		timer.one_shot = true
+		timer.connect("timeout", self, "endCooldown")
+		add_child(timer)
+		timer.start(cooldownTimer)
+		
 	pass
 	
 func getRandomCommand():
@@ -71,3 +85,8 @@ func getRandomCommand():
 	return commandList[randomNumber]
 	
 	pass
+	
+func endCooldown():
+	onCooldown = false
+	
+	

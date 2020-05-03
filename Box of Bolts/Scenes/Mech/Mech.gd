@@ -47,7 +47,7 @@ func stepForward():
 func lPunch():
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
-	$AnimatedSprite.offset = Vector2(20, 0)
+	
 
 func rPunch():
 	$AnimatedSprite.play("RPunch")
