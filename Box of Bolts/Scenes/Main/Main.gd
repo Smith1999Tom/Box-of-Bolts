@@ -102,6 +102,10 @@ func move_camera_to_bottom():
 	
 func move_camera_to_top():
 	camera.move_camera_to_top()
+	
+func shake_camera():
+	camera.shake(0.2, 15, 8)
+	pass
 
 
 

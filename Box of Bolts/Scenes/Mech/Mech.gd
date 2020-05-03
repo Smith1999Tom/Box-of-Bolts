@@ -17,14 +17,16 @@ var state = "Idle"
 onready var arena = get_parent()
 var scaleFactor = 1
 
+var main
 var enemy
 
 func ready():
 	$AnimatedSprite.play("Idle")
 	
-func init(aScale, enemyRef):
+func init(aScale, enemyRef, mainRef):
 	scaleFactor = aScale
 	enemy = enemyRef
+	main = mainRef
 	pass
 
 func _process(delta):
@@ -89,6 +91,7 @@ func getHit():
 		timer.connect("timeout", self, "endHit")
 		add_child(timer)
 		timer.start(baseStunTime)
+		main.shake_camera()
 	
 func endHit():
 	state = "Idle"

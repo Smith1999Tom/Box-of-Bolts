@@ -40,8 +40,8 @@ func init(mainRef):
 	call_deferred("add_child", player)
 	call_deferred("add_child", enemy)
 	
-	player.init(scaleFactor, enemy)
-	enemy.init(scaleFactor, player)
+	player.init(scaleFactor, enemy, main)
+	enemy.init(scaleFactor, player, main)
 
 	
 func slide_stage_left():
