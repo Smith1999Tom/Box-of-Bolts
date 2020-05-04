@@ -33,6 +33,11 @@ func stepBackward():
 		$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
 		state = "StepBackward"
 		
+func idle():
+	.idle()
+	$AnimatedSprite.speed_scale = 30
+		
+		
 func _on_AnimatedSprite_animation_finished():
 	._on_AnimatedSprite_animation_finished()
 	emit_signal("getNewCommand")

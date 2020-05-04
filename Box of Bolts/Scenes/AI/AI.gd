@@ -4,7 +4,8 @@ var main = null
 var command = null
 var enemy = null
 export var randomAI = false
-export var keyboardAI = true
+export var keyboardAI = false
+export var smartAI = true
 
 var rng = RandomNumberGenerator.new()
 
@@ -14,6 +15,9 @@ var tapBoth : Command
 var swipeLeft : Command
 var swipeRight : Command
 var commandList = []
+
+var waitingState : WaitingState
+var respondingState : RespondingState
 
 var currentState : AIState
 
@@ -38,7 +42,9 @@ func init(mainRef, commandRef, enemyRef):
 	swipeLeft = StepBackCommand.new()
 	swipeRight = StepForwardCommand.new()
 	
-	currentState = WaitingState.new()
+	waitingState = WaitingState.new()
+	respondingState = RespondingState.new()
+	currentState = waitingState
 	currentState._ready() #Since currentState is not a node, initialize it manually
 	
 	commandList.append(tapLeft)
@@ -46,11 +52,6 @@ func init(mainRef, commandRef, enemyRef):
 	commandList.append(tapBoth)
 	commandList.append(swipeLeft)
 	commandList.append(swipeRight)
-
-func _process(delta):
-	var newCommand = currentState.generateCommand(enemy, main.player)
-	if(newCommand != null):
-		executeCommand(newCommand)
 
 func executeCommand(command : Command):
 	command.execute(enemy)
@@ -61,6 +62,24 @@ func generateCommand():
 	if(randomAI):
 		var command = getRandomCommand()
 		command.execute(enemy)
+	if(smartAI):
+		#Get the new action - either a new state(if transitioning) or a command to execute
+		var action = currentState.generateCommand(enemy, main.player)
+		if action is Command:	#Execute command
+			executeCommand(action)
+		if action is String:	#Transition to new state. State must return new state as a string to avoid cyclid dependencies
+								#until issue is fixed https://github.com/godotengine/godot/issues/27136
+			currentState.exit()
+			match action:
+				"respondingState":
+					currentState = respondingState
+				"waitingState":
+					currentState = waitingState
+			currentState._ready()
+			currentState.enter()
+			generateCommand()
+		pass
+		
 	pass
 	
 func generateCommandFromEvent(event):

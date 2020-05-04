@@ -10,8 +10,6 @@ var swipeRight : Command
 var idle : Command
 
 
-
-
 func _ready():
 	print("Initializing State")
 	tapLeft = LPunchCommand.new()
@@ -22,7 +20,13 @@ func _ready():
 	idle = IdleCommand.new()
 
 
-
-func generateCommand(mech : Mech, opponent : Mech) -> Command:
+func generateCommand(mech : Mech, opponent : Mech):
 	#Virtual function to be implemented by specific state
 	return idle
+
+
+func enter():
+	pass
+	
+func exit():
+	pass
