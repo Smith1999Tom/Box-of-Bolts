@@ -41,6 +41,13 @@ func _process(delta):
 				enemy.getHit()
 	pass	
 
+func idle():
+	state = "Idle"
+	$AnimatedSprite.offset = Vector2(0, 0)
+	$AnimatedSprite.speed_scale = 1
+	$AnimatedSprite.play("Idle")
+	
+
 func stepForward():
 	if(state != "Idle"):
 		return
@@ -51,6 +58,7 @@ func stepForward():
 func lPunch():
 	if(state != "Idle"):
 		return
+	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
 	
@@ -62,7 +70,7 @@ func rPunch():
 	state = "RightPunch"
 
 func _on_AnimatedSprite_animation_finished():
-	print("DEBUG: " + self.name + " animation stop")
+	#print("DEBUG: " + self.name + " animation stop")
 	if(state == "Block" or state == "Hit"):
 		return
 	if(state == "StepForward"):
@@ -72,10 +80,7 @@ func _on_AnimatedSprite_animation_finished():
 		position.x = oldpos.x - (stepForwardDistance * direction)
 		oldpos.x = position.x
 		arena.stop_stage()
-	state = "Idle"
-	$AnimatedSprite.offset = Vector2(0, 0)
-	$AnimatedSprite.speed_scale = 1
-	$AnimatedSprite.play("Idle")
+	idle()
 	
 func block():
 	if(state != "Idle"):

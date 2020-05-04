@@ -12,20 +12,7 @@ func _ready():
 	oldpos = position
 	pass
 	
-	
 
-
-
-	
-	
-
-	#self.position.x += stepForwardDistance
-
-func lPunch():
-	.lPunch()
-	if(state != "Idle"):
-		return
-	$AnimatedSprite.offset = Vector2(20, 0)	
 
 	
 func stepBackward():

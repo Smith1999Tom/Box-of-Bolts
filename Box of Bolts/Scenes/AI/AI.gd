@@ -3,8 +3,8 @@ extends Node
 var main = null
 var command = null
 var enemy = null
-export var randomAI = true
-export var keyboardAI = false
+export var randomAI = false
+export var keyboardAI = true
 
 var rng = RandomNumberGenerator.new()
 
@@ -14,6 +14,8 @@ var tapBoth : Command
 var swipeLeft : Command
 var swipeRight : Command
 var commandList = []
+
+var currentState : AIState
 
 var numberOfCommands = 5
 
@@ -36,12 +38,22 @@ func init(mainRef, commandRef, enemyRef):
 	swipeLeft = StepBackCommand.new()
 	swipeRight = StepForwardCommand.new()
 	
+	currentState = WaitingState.new()
+	currentState._ready() #Since currentState is not a node, initialize it manually
+	
 	commandList.append(tapLeft)
 	commandList.append(tapRight)
 	commandList.append(tapBoth)
 	commandList.append(swipeLeft)
 	commandList.append(swipeRight)
 
+func _process(delta):
+	var newCommand = currentState.generateCommand(enemy, main.player)
+	if(newCommand != null):
+		executeCommand(newCommand)
+
+func executeCommand(command : Command):
+	command.execute(enemy)
 
 func generateCommand():
 	if(keyboardAI):
