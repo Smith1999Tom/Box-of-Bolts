@@ -23,6 +23,9 @@ var currentState : AIState
 
 var numberOfCommands = 5
 
+var baseResponseTime = 0.2
+var difficulty = 80
+
 var onCooldown = false
 var cooldownTimer = 1.0
 
@@ -57,6 +60,9 @@ func executeCommand(command : Command):
 	command.execute(enemy)
 
 func generateCommand():
+	if(onCooldown):
+		return
+	onCooldown = true
 	if(keyboardAI):
 		return
 	if(randomAI):
@@ -70,6 +76,7 @@ func generateCommand():
 		if action is String:	#Transition to new state. State must return new state as a string to avoid cyclid dependencies
 								#until issue is fixed https://github.com/godotengine/godot/issues/27136
 			currentState.exit()
+			yield(get_tree().create_timer(reactionTime()), "timeout")
 			match action:
 				"respondingState":
 					currentState = respondingState
@@ -78,9 +85,9 @@ func generateCommand():
 			currentState._ready()
 			currentState.enter()
 			generateCommand()
-		pass
 		
-	pass
+		
+	onCooldown = false
 	
 func generateCommandFromEvent(event):
 	if onCooldown == true:
@@ -116,6 +123,11 @@ func getRandomCommand():
 	return commandList[randomNumber]
 	
 	pass
+	
+func reactionTime():
+	var randomNumber = rng.randf_range(0.0, (100.0-difficulty)/100.0)
+	print("DEBUG: AI responded in " + str(baseResponseTime+randomNumber))
+	return baseResponseTime + randomNumber
 	
 func endCooldown():
 	onCooldown = false

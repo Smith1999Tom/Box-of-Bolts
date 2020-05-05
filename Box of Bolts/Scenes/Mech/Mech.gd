@@ -58,7 +58,8 @@ func stepForward():
 func lPunch():
 	if(state != "Idle"):
 		return
-	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
+	$AnimatedSprite.offset = Vector2(37 * direction, 0)	
+	$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
 	
@@ -66,6 +67,7 @@ func lPunch():
 func rPunch():
 	if(state != "Idle"):
 		return
+	$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("RPunch")
 	state = "RightPunch"
 

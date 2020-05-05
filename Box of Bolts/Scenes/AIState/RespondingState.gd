@@ -2,13 +2,14 @@ extends AIState
 
 class_name RespondingState
 
-var reactionTimeMin = 0.2
 
 func _ready():
 	._ready()
 	pass
 	
 func generateCommand(mech, opponent):
+	if(mech.state == "Hit"):
+		return "waitingState"
 	if(opponent.state == "LeftPunch" or opponent.state == "RightPunch"):
 		#print("AIWAITINGSTATE: Opponent is attacking")
 		tapBoth.block = true

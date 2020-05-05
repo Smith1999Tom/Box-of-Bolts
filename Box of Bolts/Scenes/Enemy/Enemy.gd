@@ -19,6 +19,10 @@ func _ready():
 	
 	pass
 
+func _process(delta):
+	if(state == "Idle" or state == "Block"):
+		emit_signal("getNewCommand")
+
 func stepBackward():
 	var shouldMove = false
 	
@@ -35,11 +39,10 @@ func stepBackward():
 		
 func idle():
 	.idle()
-	$AnimatedSprite.speed_scale = 30
+	$AnimatedSprite.speed_scale = 1
 		
 		
 func _on_AnimatedSprite_animation_finished():
 	._on_AnimatedSprite_animation_finished()
-	emit_signal("getNewCommand")
 	pass
 

@@ -11,7 +11,6 @@ var idle : Command
 
 
 func _ready():
-	print("Initializing State")
 	tapLeft = LPunchCommand.new()
 	tapRight = RPunchCommand.new()
 	tapBoth = BlockCommand.new()
