@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Player_Idle_Updated_Export.png">
+	<!-- Created with Adobe Animate version 20.0.3.25487 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Player_Idle_Updated_Export0000" x="0" y="0" width="218" height="262" pivotX="3" pivotY="7.3"/>
+	<SubTexture name="Player_Idle_Updated_Export0001" x="218" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0002" x="436" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0003" x="654" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0004" x="872" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0005" x="1090" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0006" x="1308" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0007" x="1526" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0008" x="1744" y="0" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0009" x="0" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0010" x="218" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0011" x="436" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0012" x="654" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0013" x="872" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0014" x="1090" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0015" x="1308" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0016" x="1526" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0017" x="1744" y="262" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0018" x="0" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0019" x="218" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0020" x="436" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0021" x="654" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0022" x="872" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0023" x="1090" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0024" x="1308" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0025" x="1526" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0026" x="1744" y="524" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0027" x="0" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0028" x="218" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0029" x="436" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0030" x="654" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0031" x="872" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0032" x="1090" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0033" x="1308" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0034" x="1526" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0035" x="1744" y="786" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0036" x="0" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0037" x="218" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0038" x="436" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0039" x="654" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0040" x="872" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0041" x="1090" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0042" x="1308" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0043" x="1526" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0044" x="1744" y="1048" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0045" x="0" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0046" x="218" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0047" x="436" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0048" x="654" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0049" x="872" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0050" x="1090" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0051" x="1308" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0052" x="1526" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0053" x="1744" y="1310" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0054" x="0" y="1572" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0055" x="218" y="1572" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0056" x="436" y="1572" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0057" x="654" y="1572" width="218" height="262"/>
+	<SubTexture name="Player_Idle_Updated_Export0058" x="872" y="1572" width="218" height="262"/>
+</TextureAtlas>
