@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Player_RPunch_Updated_Export.png">
+	<!-- Created with Adobe Animate version 20.0.3.25487 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Player_RPunch_Updated0000" x="0" y="0" width="295" height="279" pivotX="23.35" pivotY="16.3"/>
+	<SubTexture name="Player_RPunch_Updated0001" x="295" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0002" x="590" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0003" x="885" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0004" x="1180" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0005" x="1475" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0006" x="1770" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0007" x="2065" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0008" x="2360" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0009" x="2655" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0010" x="2950" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0011" x="3245" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0012" x="3540" y="0" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0013" x="0" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0014" x="295" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0015" x="590" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0016" x="885" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0017" x="1180" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0018" x="1475" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0019" x="1770" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0020" x="2065" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0021" x="2360" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0022" x="2655" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0023" x="2950" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0024" x="3245" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0025" x="3540" y="279" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0026" x="0" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0027" x="295" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0028" x="590" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0029" x="885" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0030" x="1180" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0031" x="1475" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0032" x="1770" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0033" x="2065" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0034" x="2360" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0035" x="2655" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0036" x="2950" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0037" x="3245" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0038" x="3540" y="558" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0039" x="0" y="837" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0040" x="295" y="837" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0041" x="590" y="837" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0042" x="885" y="837" width="295" height="279"/>
+	<SubTexture name="Player_RPunch_Updated0043" x="1180" y="837" width="295" height="279"/>
+</TextureAtlas>
