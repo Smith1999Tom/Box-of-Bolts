@@ -24,7 +24,7 @@ var currentState : AIState
 var numberOfCommands = 5
 
 var baseResponseTime = 0.2
-var difficulty = 80
+var difficulty = 60
 
 var onCooldown = false
 var cooldownTimer = 1.0

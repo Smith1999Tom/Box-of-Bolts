@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Main/Camera.gd" type="Script" id=2]
 [ext_resource path="res://bensound-moose.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Main/ArenaGUI.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Bars/LifeBar.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,3 +15,38 @@ script = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 2.51758
+margin_top = 10.0701
+margin_right = 42.5176
+margin_bottom = 50.0701
+color = Color( 0.219608, 0.4, 0.654902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ArenaGUI" type="MarginContainer" parent="CanvasLayer"]
+margin_right = 1210.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 1210, 186 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="CanvasLayer/ArenaGUI"]
+
+[node name="Bars" type="VBoxContainer" parent="CanvasLayer/ArenaGUI"]
+margin_right = 1210.0
+margin_bottom = 186.0
+
+[node name="PlayerEnergy" type="HBoxContainer" parent="CanvasLayer/ArenaGUI/Bars"]
+margin_right = 1210.0
+
+[node name="LifeBar" parent="CanvasLayer/ArenaGUI/Bars" instance=ExtResource( 5 )]
+margin_top = 4.0
+margin_bottom = 186.0

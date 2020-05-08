@@ -2,12 +2,15 @@ extends Node2D
 
 class_name Mech
 
+signal onHit(value)
+signal onAction(value)
+
 export var stepForwardDistance = 120
 export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 
 var health = 100
-var stamina = 100
+var energy = 100
 
 var hitFrame = 11	#The frame of animation that hits will be checked on
 var baseStunTime = 1.0
@@ -30,6 +33,8 @@ func init(aScale, enemyRef, mainRef):
 	scaleFactor = aScale
 	enemy = enemyRef
 	main = mainRef
+	connect("onHit", main.gui, "onHit")
+	connect("onAction", main.gui, "onAction")
 	pass
 
 func _process(delta):
@@ -61,6 +66,7 @@ func stepForward():
 func lPunch():
 	if(state != "Idle"):
 		return
+	emit_signal("onAction", 20)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("LPunch")
@@ -70,6 +76,7 @@ func lPunch():
 func rPunch():
 	if(state != "Idle"):
 		return
+	emit_signal("onAction", 40)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("RPunch")
@@ -103,6 +110,7 @@ func end_block():
 func getHit():
 	if(state != "Hit" && state != "Block"):
 		state = "Hit"
+		emit_signal("onHit", 20)
 		$AnimatedSprite.play("Hit")
 		print("DEBUG: " + self.name + " got hit")
 		var timer = Timer.new()
@@ -120,10 +128,10 @@ func stepBackward():
 	print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")
 	pass
 	
-func reduceStamina(amount):
-	stamina -= amount
-	if stamina < 0:
-		stamina = 0
+func reduceEnergy(amount):
+	energy -= amount
+	if energy < 0:
+		energy = 0
 	
 	
 func getDistanceBetweenMechs():
