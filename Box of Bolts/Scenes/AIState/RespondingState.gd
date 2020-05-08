@@ -9,16 +9,17 @@ func _ready():
 	
 func generateCommand(mech, opponent):
 	if(mech.state == "Hit"):
-		return "waitingState"
+		return waitingState
 	if(opponent.state == "LeftPunch" or opponent.state == "RightPunch"):
 		#print("AIWAITINGSTATE: Opponent is attacking")
 		tapBoth.block = true
 		return tapBoth
 	else:
-		return "waitingState"
+		return waitingState
 	pass
 	
 func enter():
+	print("DEBUG: AI responding")
 	pass
 	
 func exit():

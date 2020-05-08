@@ -9,14 +9,21 @@ var swipeLeft : Command
 var swipeRight : Command
 var idle : Command
 
+var respondingState
+var waitingState
 
-func _ready():
+	
+func init(aRespondingState, aWaitingState):
+	respondingState = aRespondingState
+	waitingState = aWaitingState
+	
 	tapLeft = LPunchCommand.new()
 	tapRight = RPunchCommand.new()
 	tapBoth = BlockCommand.new()
 	swipeLeft = StepBackCommand.new()
 	swipeRight = StepForwardCommand.new()
 	idle = IdleCommand.new()
+	pass
 
 
 func generateCommand(mech : Mech, opponent : Mech):

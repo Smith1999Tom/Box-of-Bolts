@@ -6,7 +6,7 @@ export var stepForwardDistance = 120
 export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 
-var hitFrame = 15	#The frame of animation that hits will be checked on
+var hitFrame = 11	#The frame of animation that hits will be checked on
 var baseStunTime = 1.0
 
 var direction = 1
@@ -58,8 +58,8 @@ func stepForward():
 func lPunch():
 	if(state != "Idle"):
 		return
-	$AnimatedSprite.offset = Vector2(37 * direction, 0)	
-	$AnimatedSprite.speed_scale = 1.5
+	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
+	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
 	
@@ -67,7 +67,8 @@ func lPunch():
 func rPunch():
 	if(state != "Idle"):
 		return
-	$AnimatedSprite.speed_scale = 1.5
+	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
+	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("RPunch")
 	state = "RightPunch"
 

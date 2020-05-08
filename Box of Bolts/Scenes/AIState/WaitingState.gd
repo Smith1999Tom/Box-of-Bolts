@@ -12,11 +12,12 @@ func generateCommand(mech, opponent):
 	if(opponent.state == "RightPunch" or opponent.state == "LeftPunch"):
 		#print("AIWAITINGSTATE: Opponent is attacking")
 		#tapBoth.block = true
-		return "respondingState"
+		return respondingState
 	else:
 		return idle
 		
 func enter():
+	print("DEBUG: AI waiting")
 	pass
 	
 func exit():

@@ -47,8 +47,11 @@ func init(mainRef, commandRef, enemyRef):
 	
 	waitingState = WaitingState.new()
 	respondingState = RespondingState.new()
+	waitingState.init(respondingState, waitingState)
+	respondingState.init(respondingState, waitingState)
 	currentState = waitingState
-	currentState._ready() #Since currentState is not a node, initialize it manually
+	
+	
 	
 	commandList.append(tapLeft)
 	commandList.append(tapRight)
@@ -62,9 +65,11 @@ func executeCommand(command : Command):
 func generateCommand():
 	if(onCooldown):
 		return
-	onCooldown = true
+	
 	if(keyboardAI):
 		return
+		
+	onCooldown = true
 	if(randomAI):
 		var command = getRandomCommand()
 		command.execute(enemy)
@@ -73,6 +78,12 @@ func generateCommand():
 		var action = currentState.generateCommand(enemy, main.player)
 		if action is Command:	#Execute command
 			executeCommand(action)
+		if action is AIState:
+			currentState.exit()
+			yield(get_tree().create_timer(reactionTime()), "timeout")
+			currentState = action
+			currentState.enter()
+			generateCommand()
 		if action is String:	#Transition to new state. State must return new state as a string to avoid cyclid dependencies
 								#until issue is fixed https://github.com/godotengine/godot/issues/27136
 			currentState.exit()
@@ -82,7 +93,6 @@ func generateCommand():
 					currentState = respondingState
 				"waitingState":
 					currentState = waitingState
-			currentState._ready()
 			currentState.enter()
 			generateCommand()
 		
