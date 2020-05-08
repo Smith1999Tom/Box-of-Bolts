@@ -6,6 +6,9 @@ export var stepForwardDistance = 120
 export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 
+var health = 100
+var stamina = 100
+
 var hitFrame = 11	#The frame of animation that hits will be checked on
 var baseStunTime = 1.0
 
@@ -116,3 +119,12 @@ func endHit():
 func stepBackward():
 	print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")
 	pass
+	
+func reduceStamina(amount):
+	stamina -= amount
+	if stamina < 0:
+		stamina = 0
+	
+	
+func getDistanceBetweenMechs():
+	return abs(self.position.x - enemy.position.x)
