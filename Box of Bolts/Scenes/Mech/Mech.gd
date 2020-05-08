@@ -10,7 +10,10 @@ export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 
 var health = 100
-var energy = 100
+var energy = 100.0
+
+var energyCooldown = 3.0
+var energyCooldownRemaining = 0.0
 
 var hitFrame = 11	#The frame of animation that hits will be checked on
 var baseStunTime = 1.0
@@ -47,6 +50,11 @@ func _process(delta):
 			var distanceBetweenMechs = abs(self.position.x - enemy.position.x)
 			if distanceBetweenMechs <= 400:
 				enemy.getHit()
+				
+	if(energyCooldownRemaining <= 0):
+		rechargeEnergy(delta)
+	else:
+		energyCooldownRemaining -= 1 * delta
 	pass	
 
 func idle():
@@ -66,7 +74,7 @@ func stepForward():
 func lPunch():
 	if(state != "Idle"):
 		return
-	emit_signal("onAction", 20)
+	reduceEnergy(-20)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("LPunch")
@@ -76,7 +84,7 @@ func lPunch():
 func rPunch():
 	if(state != "Idle"):
 		return
-	emit_signal("onAction", 40)
+	reduceEnergy(-40)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("RPunch")
@@ -110,7 +118,7 @@ func end_block():
 func getHit():
 	if(state != "Hit" && state != "Block"):
 		state = "Hit"
-		emit_signal("onHit", 20)
+		emit_signal("onHit", -20)
 		$AnimatedSprite.play("Hit")
 		print("DEBUG: " + self.name + " got hit")
 		var timer = Timer.new()
@@ -129,9 +137,19 @@ func stepBackward():
 	pass
 	
 func reduceEnergy(amount):
-	energy -= amount
+	energyCooldownRemaining = energyCooldown
+	energy += amount
 	if energy < 0:
 		energy = 0
+	emit_signal("onAction", energy)
+		
+func rechargeEnergy(delta):
+	energy += 50 * delta
+	if energy >= 100:
+		energy = 100
+	else:
+		emit_signal("onAction", energy)
+	pass
 	
 	
 func getDistanceBetweenMechs():

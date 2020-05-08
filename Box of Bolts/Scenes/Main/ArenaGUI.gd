@@ -23,11 +23,11 @@ func init():
 	
 
 func onHit(healthValue):
-	updateHealth(healthbar.value - healthValue)
+	updateHealth(healthValue)
 	pass
 	
 func onAction(energyValue):
-	updateEnergy(energybar.value - energyValue)
+	updateEnergy(energyValue)
 	pass
 
 func updateHealth(new_value):
