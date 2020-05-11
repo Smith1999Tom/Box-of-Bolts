@@ -16,8 +16,9 @@ var swipeLeft : Command
 var swipeRight : Command
 var commandList = []
 
-var waitingState : WaitingState
-var respondingState : RespondingState
+var waitingState
+var respondingState
+var attackingState : AttackingState
 
 var currentState : AIState
 
@@ -45,11 +46,17 @@ func init(mainRef, commandRef, enemyRef):
 	swipeLeft = StepBackCommand.new()
 	swipeRight = StepForwardCommand.new()
 	
-	waitingState = WaitingState.new()
-	respondingState = RespondingState.new()
-	waitingState.init(respondingState, waitingState)
-	respondingState.init(respondingState, waitingState)
+	#waitingState = WaitingState.new()
+	waitingState = Node.new()
+	waitingState.set_script(WaitingState)
+	respondingState = Node.new()
+	respondingState.set_script(RespondingState)
+	attackingState = AttackingState.new()
+	waitingState.init(respondingState, waitingState, attackingState)
+	respondingState.init(respondingState, waitingState, attackingState)
+	attackingState.init(respondingState, waitingState, attackingState)
 	currentState = waitingState
+	call_deferred("add_child", currentState)
 	
 	
 	
@@ -80,8 +87,10 @@ func generateCommand():
 			executeCommand(action)
 		if action is AIState:
 			currentState.exit()
+			call_deferred("remove_child", currentState)
 			yield(get_tree().create_timer(reactionTime()), "timeout")
 			currentState = action
+			call_deferred("add_child", currentState)
 			currentState.enter()
 			generateCommand()
 		if action is String:	#Transition to new state. State must return new state as a string to avoid cyclid dependencies

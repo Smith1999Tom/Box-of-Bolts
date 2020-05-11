@@ -11,11 +11,15 @@ var idle : Command
 
 var respondingState
 var waitingState
+var attackingState
 
+func _ready():
+	pass
 	
-func init(aRespondingState, aWaitingState):
+func init(aRespondingState, aWaitingState, aAttackingState):
 	respondingState = aRespondingState
 	waitingState = aWaitingState
+	attackingState = aAttackingState
 	
 	tapLeft = LPunchCommand.new()
 	tapRight = RPunchCommand.new()

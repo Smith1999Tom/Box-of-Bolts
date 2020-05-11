@@ -14,7 +14,8 @@ func generateCommand(mech, opponent):
 	var distance = mech.getDistanceBetweenMechs()
 	if distance <= mech.stepForwardDistance * 4:	#Mech is close, need to counter
 		return counter(mech, opponent)
-		pass
+	else:#Need to program more counters
+		return waitingState
 	
 	pass
 	

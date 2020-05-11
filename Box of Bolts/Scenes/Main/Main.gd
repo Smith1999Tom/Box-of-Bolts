@@ -38,7 +38,7 @@ func _ready():
 	enemy = Enemy.instance()
 	input = InputHandler.new()
 	
-	player.set_name("player")
+	player.set_name("Player")
 	
 	gui.init()
 	

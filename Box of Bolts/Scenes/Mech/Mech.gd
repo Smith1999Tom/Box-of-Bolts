@@ -2,8 +2,8 @@ extends Node2D
 
 class_name Mech
 
-signal onHit(value)
-signal onAction(value)
+signal onHit(name, value)
+signal onAction(name, value)
 
 export var stepForwardDistance = 120
 export var stepForwardSpeed = 1.0
@@ -11,6 +11,9 @@ export var stepBackwardSpeed = 0.7
 
 var health = 100
 var energy = 100.0
+
+var lPunchEnergy = 20
+var rPunchEnergy = 40
 
 var energyCooldown = 3.0
 var energyCooldownRemaining = 0.0
@@ -72,9 +75,9 @@ func stepForward():
 	state = "StepForward"
 
 func lPunch():
-	if(state != "Idle"):
+	if(state != "Idle" or energy < lPunchEnergy):
 		return
-	reduceEnergy(-20)
+	reduceEnergy(lPunchEnergy * -1)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("LPunch")
@@ -82,9 +85,9 @@ func lPunch():
 	
 
 func rPunch():
-	if(state != "Idle"):
+	if(state != "Idle" or energy < rPunchEnergy):
 		return
-	reduceEnergy(-40)
+	reduceEnergy(rPunchEnergy * -1)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("RPunch")
@@ -118,7 +121,7 @@ func end_block():
 func getHit():
 	if(state != "Hit" && state != "Block"):
 		state = "Hit"
-		emit_signal("onHit", -20)
+		emit_signal("onHit", self.name, self.health-20)
 		$AnimatedSprite.play("Hit")
 		print("DEBUG: " + self.name + " got hit")
 		var timer = Timer.new()
@@ -141,14 +144,14 @@ func reduceEnergy(amount):
 	energy += amount
 	if energy < 0:
 		energy = 0
-	emit_signal("onAction", energy)
+	emit_signal("onAction", self.name, energy)
 		
 func rechargeEnergy(delta):
 	energy += 50 * delta
 	if energy >= 100:
 		energy = 100
 	else:
-		emit_signal("onAction", energy)
+		emit_signal("onAction", self.name, energy)
 	pass
 	
 	
