@@ -10,7 +10,7 @@ export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 
 var health = 100
-var energy = 100.0
+var energy = 100
 
 var lPunchEnergy = 20
 var rPunchEnergy = 40
@@ -19,7 +19,10 @@ var energyCooldown = 3.0
 var energyCooldownRemaining = 0.0
 
 var hitFrame = 11	#The frame of animation that hits will be checked on
-var baseStunTime = 1.0
+var hitCooldown = 0.3
+var hitCooldownRemaining = 0.0
+var baseStunTime = 2.0
+var stunTimeRemaining = 0.0
 
 var direction = 1
 var oldpos = Vector2(0,0)
@@ -53,6 +56,18 @@ func _process(delta):
 			var distanceBetweenMechs = abs(self.position.x - enemy.position.x)
 			if distanceBetweenMechs <= 400:
 				enemy.getHit()
+	if(state == "Hit"):
+		if(hitCooldownRemaining > 0):
+			hitCooldownRemaining -= delta
+		else:
+			hitCooldownRemaining = 0	
+		if(stunTimeRemaining > 0):
+			stunTimeRemaining -= delta
+		else:
+			stunTimeRemaining = 0
+			idle()
+		
+	
 				
 	if(energyCooldownRemaining <= 0):
 		rechargeEnergy(delta)
@@ -119,16 +134,14 @@ func end_block():
 	$AnimatedSprite.play("Idle")
 	
 func getHit():
-	if(state != "Hit" && state != "Block"):
+	if(state != "Block" and hitCooldownRemaining == 0):
 		state = "Hit"
+		hitCooldownRemaining = hitCooldown
 		emit_signal("onHit", self.name, self.health-20)
+		self.health -= 20
 		$AnimatedSprite.play("Hit")
 		print("DEBUG: " + self.name + " got hit")
-		var timer = Timer.new()
-		timer.one_shot = true
-		timer.connect("timeout", self, "endHit")
-		add_child(timer)
-		timer.start(baseStunTime)
+		stunTimeRemaining = baseStunTime
 		main.shake_camera()
 	
 func endHit():

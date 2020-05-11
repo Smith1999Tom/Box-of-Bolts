@@ -3,6 +3,7 @@ extends Mech
 signal getNewCommand
 
 var ai
+var difficulty = 50
 
 func _ready():
 	._ready()

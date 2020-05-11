@@ -13,7 +13,8 @@ func _process(delta):
 
 
 func generateCommand(mech, opponent):
-	
+	if(mech.state == "Hit"):
+		return idle
 	#Check if opponent is attacking
 	if(opponent.state == "RightPunch" or opponent.state == "LeftPunch"):
 		#print("AIWAITINGSTATE: Opponent is attacking")

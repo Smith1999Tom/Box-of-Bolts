@@ -12,5 +12,10 @@ func _ready():
 func generateCommand(mech, opponent):
 	if(mech.energy < mech.lPunchEnergy):
 		return waitingState
-	return tapLeft
+	elif(punches < 3):
+		punches += 1
+		return tapLeft
+	else:
+		punches +=1
+		return tapRight
 	pass

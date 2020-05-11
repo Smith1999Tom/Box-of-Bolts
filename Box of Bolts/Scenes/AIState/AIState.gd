@@ -36,7 +36,9 @@ func generateCommand(mech : Mech, opponent : Mech):
 
 
 func enter():
+	_ready()
 	pass
 	
 func exit():
+
 	pass
