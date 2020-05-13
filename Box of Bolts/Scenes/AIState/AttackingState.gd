@@ -10,6 +10,9 @@ func _ready():
 	pass
 
 func generateCommand(mech, opponent):
+	var distance = mech.getDistanceBetweenMechs()
+	if(distance > 400):
+		return swipeRight
 	if(mech.energy < mech.lPunchEnergy):
 		return waitingState
 	elif(punches < 3):

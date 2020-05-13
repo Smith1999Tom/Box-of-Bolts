@@ -25,7 +25,10 @@ func _process(delta):
 		emit_signal("getNewCommand")
 
 func stepBackward():
+	end_block()
 	var shouldMove = false
+	if(state != "Idle" or stunTimeRemaining > 0):
+		return
 	
 	if(position.x <= arena.rightBoundary - 400):
 		shouldMove = true
@@ -37,6 +40,7 @@ func stepBackward():
 		$AnimatedSprite.speed_scale = stepBackwardSpeed*2
 		$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
 		state = "StepBackward"
+		.stepBackward()
 		
 func idle():
 	.idle()

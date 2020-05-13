@@ -9,16 +9,22 @@ export var stepForwardDistance = 120
 export var stepForwardSpeed = 1.0
 export var stepBackwardSpeed = 0.7
 
-var health = 100
-var energy = 100
+var max_health = 100
+var max_energy = 100
+var health = max_health
+var energy = max_energy
+
 
 var lPunchEnergy = 20
 var rPunchEnergy = 40
+var lPunchDamage = 5
+var rPunchDamage = 15
 
 var energyCooldown = 3.0
 var energyCooldownRemaining = 0.0
 
-var hitFrame = 11	#The frame of animation that hits will be checked on
+var lPunchHitFrame = 11	#The frame of animation that hits will be checked on
+var rPunchHitFrame = 26
 var hitCooldown = 0.3
 var hitCooldownRemaining = 0.0
 var baseStunTime = 2.0
@@ -47,15 +53,25 @@ func init(aScale, enemyRef, mainRef):
 	pass
 
 func _process(delta):
+	var rechargeFactor = 1.0
 	if(state == "StepForward"):
 		self.position.x += ((stepForwardDistance * delta * stepForwardSpeed * direction)/ scaleFactor)
+		rechargeFactor = 0.2
 	if(state == "StepBackward"):
 		self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed * direction) / scaleFactor)
+		rechargeFactor = 0.2
 	if(state == "LeftPunch"):
-		if($AnimatedSprite.frame == hitFrame):
+		rechargeFactor = 0.2
+		if($AnimatedSprite.frame == lPunchHitFrame):
 			var distanceBetweenMechs = abs(self.position.x - enemy.position.x)
 			if distanceBetweenMechs <= 400:
-				enemy.getHit()
+				enemy.getHit(lPunchDamage)
+	if(state == "RightPunch"):
+		rechargeFactor = 0.2
+		if($AnimatedSprite.frame == rPunchHitFrame):
+			var distanceBetweenMechs = abs(self.position.x - enemy.position.x)
+			if distanceBetweenMechs <= 400:
+				enemy.getHit(rPunchDamage)
 	if(state == "Hit"):
 		if(hitCooldownRemaining > 0):
 			hitCooldownRemaining -= delta
@@ -66,11 +82,13 @@ func _process(delta):
 		else:
 			stunTimeRemaining = 0
 			idle()
+	if(state == "Block"):
+		rechargeFactor = 0.2
 		
 	
 				
 	if(energyCooldownRemaining <= 0):
-		rechargeEnergy(delta)
+		rechargeEnergy(delta, rechargeFactor)
 	else:
 		energyCooldownRemaining -= 1 * delta
 	pass	
@@ -83,16 +101,19 @@ func idle():
 	
 
 func stepForward():
+	end_block()
 	if(state != "Idle"):
 		return
 	$AnimatedSprite.speed_scale = stepForwardSpeed*2
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
+	reduceEnergy(0, 1)
 
 func lPunch():
+	end_block()
 	if(state != "Idle" or energy < lPunchEnergy):
 		return
-	reduceEnergy(lPunchEnergy * -1)
+	reduceEnergy(lPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("LPunch")
@@ -100,9 +121,10 @@ func lPunch():
 	
 
 func rPunch():
+	end_block()
 	if(state != "Idle" or energy < rPunchEnergy):
 		return
-	reduceEnergy(rPunchEnergy * -1)
+	reduceEnergy(rPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	#$AnimatedSprite.speed_scale = 1.5
 	$AnimatedSprite.play("RPunch")
@@ -118,7 +140,7 @@ func _on_AnimatedSprite_animation_finished():
 	if(state == "StepBackward"):
 		position.x = oldpos.x - (stepForwardDistance * direction)
 		oldpos.x = position.x
-		arena.stop_stage()
+		#arena.stop_stage()
 	idle()
 	
 func block():
@@ -133,12 +155,12 @@ func end_block():
 	state = "Idle"
 	$AnimatedSprite.play("Idle")
 	
-func getHit():
+func getHit(damage):
 	if(state != "Block" and hitCooldownRemaining == 0):
 		state = "Hit"
 		hitCooldownRemaining = hitCooldown
-		emit_signal("onHit", self.name, self.health-20)
-		self.health -= 20
+		emit_signal("onHit", self.name, self.health-damage)
+		self.health -= damage
 		$AnimatedSprite.play("Hit")
 		print("DEBUG: " + self.name + " got hit")
 		stunTimeRemaining = baseStunTime
@@ -149,20 +171,21 @@ func endHit():
 	$AnimatedSprite.play("Idle")
 	
 func stepBackward():
-	print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")
+	#print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")
+	reduceEnergy(0, 1)
 	pass
 	
-func reduceEnergy(amount):
-	energyCooldownRemaining = energyCooldown
+func reduceEnergy(amount, cooldownFactor):
+	energyCooldownRemaining = energyCooldown * cooldownFactor
 	energy += amount
 	if energy < 0:
 		energy = 0
 	emit_signal("onAction", self.name, energy)
 		
-func rechargeEnergy(delta):
-	energy += 50 * delta
-	if energy >= 100:
-		energy = 100
+func rechargeEnergy(delta, rechargeFactor):
+	energy += 50 * delta * rechargeFactor
+	if energy >= max_energy:
+		energy = max_energy
 	else:
 		emit_signal("onAction", self.name, energy)
 	pass

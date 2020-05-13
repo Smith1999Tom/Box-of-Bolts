@@ -48,5 +48,9 @@ margin_bottom = 186.0
 margin_right = 1210.0
 
 [node name="LifeBar" parent="CanvasLayer/ArenaGUI/Bars" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 4.0
+margin_right = 1210.0
 margin_bottom = 186.0

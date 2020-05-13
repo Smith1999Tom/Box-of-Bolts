@@ -25,8 +25,10 @@ func counter(mech, opponent):
 		return tapBoth
 	elif opponent.state == "RightPunch":
 		return tapLeft
+	elif opponent.state == "Block":
+		return tapRight
 	else:
-		return waitingState
+		return attackingState
 	
 
 func enter():

@@ -11,6 +11,7 @@ var scaleFactor = 1.0
 var oldpos = 0
 var newpos = 0
 var velocity = 0.0
+var timeLeft = 0.0
 #Left and right boundaries are arbitrary since they are affected by view scaling factor, whereas stage pos is not
 var leftBoundary = 0
 var rightBoundary = 0
@@ -24,6 +25,12 @@ func _ready():
 	rightBoundary = 1280
 	
 func _process(delta):
+	if(timeLeft <= 0):
+		timeLeft = 0
+		stop_stage()
+	else:
+		timeLeft -= delta
+	
 	self.position.x += velocity * delta * main.get_view_scaling_factor().x
 	#$Farm_Layer_1.position.x += velocity * delta * main.get_view_scaling_factor().x
 	$Farm_Layer_2.position.x -= velocity * delta * 0.6
@@ -45,12 +52,15 @@ func init(mainRef):
 
 	
 func slide_stage_left():
-	velocity = 1280 * 0.125 * player.stepBackwardSpeed	#1/4 of the screen at the same speed as the player.
+	#velocity = (1280/player.stepForwardDistance) * 10 * (1/player.stepBackwardSpeed)	#1/4 of the screen at the same speed as the player.
+	velocity = player.stepForwardDistance / (player.stepBackwardSpeed*2)
+	timeLeft = player.stepBackwardSpeed*2
 	newpos = oldpos + (player.stepForwardDistance * scaleFactor.x)
 	update_boundaries()
 	
 func slide_stage_right():
-	velocity = 1280 * 0.125 * -1 * enemy.stepBackwardSpeed
+	velocity = enemy.stepForwardDistance / (enemy.stepBackwardSpeed*2) * -1
+	timeLeft = enemy.stepBackwardSpeed*2
 	newpos = oldpos - (player.stepForwardDistance * scaleFactor.x)
 	update_boundaries()
 	
@@ -63,6 +73,8 @@ func update_boundaries():
 	leftBoundary -= difference/main.get_view_scaling_factor().x
 	rightBoundary -= difference/main.get_view_scaling_factor().x
 	leftBoundary = round(leftBoundary)
+	$LBound.rect_position.x = leftBoundary-10
+	$RBound.rect_position.x = rightBoundary
 	rightBoundary = round(rightBoundary)
 
 func stop_stage():
