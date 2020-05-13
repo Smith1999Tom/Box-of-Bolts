@@ -18,7 +18,7 @@ func _ready():
 func stepBackward():
 	var shouldMove = false
 	end_block()
-	if(state != "Idle" or stunTimeRemaining > 0):
+	if(state != "Idle" or stunTimeRemaining > 0 or state == "Countdown"):
 		return
 	
 	if(position.x > arena.leftBoundary + 320):

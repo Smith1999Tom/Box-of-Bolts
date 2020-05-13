@@ -34,7 +34,7 @@ var direction = 1
 var oldpos = Vector2(0,0)
 
 var screenpos
-var state = "Idle"
+var state = "Countdown"
 var arena
 var scaleFactor = 1
 
@@ -56,6 +56,8 @@ func init(aScale, enemyRef, mainRef):
 	pass
 
 func _process(delta):
+	if(state == "Countdown"):
+		return
 	var rechargeFactor = 1.0
 	if(state == "StepForward"):
 		self.position.x += ((stepForwardDistance * delta * stepForwardSpeed * direction))
@@ -105,7 +107,7 @@ func idle():
 
 func stepForward():
 	
-	if(state != "Idle" and state != "Block"):
+	if(state != "Idle" and state != "Block" or state == "Countdown"):
 		return
 	end_block()
 	$AnimatedSprite.speed_scale = stepForwardSpeed*2
@@ -115,7 +117,7 @@ func stepForward():
 
 func lPunch():
 	
-	if((state != "Idle" and state != "Block") or energy < lPunchEnergy):
+	if((state != "Idle" and state != "Block") or energy < lPunchEnergy or state == "Countdown"):
 		return
 	end_block()
 	reduceEnergy(lPunchEnergy * -1, 1)
@@ -127,7 +129,7 @@ func lPunch():
 
 func rPunch():
 	
-	if((state != "Idle" and state != "Block") or energy < rPunchEnergy):
+	if((state != "Idle" and state != "Block") or energy < rPunchEnergy or state == "Countdown"):
 		return
 	end_block()
 	reduceEnergy(rPunchEnergy * -1, 1)
@@ -138,7 +140,7 @@ func rPunch():
 
 func _on_AnimatedSprite_animation_finished():
 	#print("DEBUG: " + self.name + " animation stop")
-	if(state == "Block" or state == "Hit"):
+	if(state == "Block" or state == "Hit" or state == "Countdown"):
 		return
 	if(state == "StepForward"):
 		position.x = oldpos.x + (stepForwardDistance * direction)
@@ -150,13 +152,15 @@ func _on_AnimatedSprite_animation_finished():
 	idle()
 	
 func block():
-	if(state != "Idle"):
+	if(state != "Idle" or state == "Countdown"):
 		return
 	print("DEBUG: " + self.name + " is blocking")
 	state = "Block"
 	$AnimatedSprite.play("Block")
 	
 func end_block():
+	if(state == "Countdown"):
+		return
 	print("DEBUG: " + self.name + " has stopped blocking")
 	state = "Idle"
 	$AnimatedSprite.play("Idle")

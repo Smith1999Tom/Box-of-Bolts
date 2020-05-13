@@ -21,6 +21,8 @@ func _ready():
 	pass
 
 func _process(delta):
+	if(state == "Countdown"):
+		return
 	if(state == "Idle" or state == "Block"):
 		emit_signal("getNewCommand")
 

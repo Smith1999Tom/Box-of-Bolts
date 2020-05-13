@@ -4,7 +4,8 @@ onready var root = get_tree().get_root()
 var main = null
 var player = null
 var enemy = null
-onready var gui = $CanvasLayer/ArenaGUI
+onready var gui = $ArenaGuiLayer/ArenaGUI
+
 
 var scaleFactor = 1.0
 
@@ -18,6 +19,7 @@ var leftBoundary = 0
 var rightBoundary = 0
 
 func _ready():
+	$CountdownLayer/CountdownSprite.play()
 	add_child(player)
 	add_child(enemy)
 	scaleFactor = main.get_view_scaling_factor()
@@ -86,3 +88,16 @@ func stop_stage():
 		velocity = 0
 		
 	pass
+
+
+func _on_CountdownSprite_animation_finished():
+	
+	call_deferred("remove_child", $CountdownLayer)
+	pass # Replace with function body.
+
+
+func _on_CountdownSprite_frame_changed():
+	if($CountdownLayer/CountdownSprite.frame == 3):
+		player.idle()
+		enemy.idle()
+	pass # Replace with function body.

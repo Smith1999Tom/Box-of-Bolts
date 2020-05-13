@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func generateCommand(mech, opponent):
-	if(mech.state == "Hit"):
+	if(mech.state == "Hit" or mech.state == "Countdown"):
 		return idle
 	
 	var distance = mech.getDistanceBetweenMechs()
