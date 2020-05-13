@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Stage/Arena.gd" type="Script" id=1]
 [ext_resource path="res://Art/Level1-01.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Farm_Layer_2-01.png" type="Texture" id=4]
 [ext_resource path="res://Farm_Layer_4-01.png" type="Texture" id=5]
 [ext_resource path="res://Farm_Layer_3.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Bars/LifeGui.tscn" type="PackedScene" id=7]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,3 +48,5 @@ color = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 7 )]

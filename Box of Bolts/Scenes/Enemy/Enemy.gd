@@ -16,7 +16,7 @@ func _ready():
 	direction = -1
 	ai = arena.main.ai
 	self.connect("getNewCommand", ai, "generateCommand")
-	emit_signal("getNewCommand")
+	#emit_signal("getNewCommand")
 	
 	pass
 

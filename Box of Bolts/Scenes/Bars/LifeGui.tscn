@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Bars/LifeBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Main/ArenaGUI.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 10
+
+[node name="ArenaGUI" type="MarginContainer" parent="."]
+margin_right = 1210.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 1210, 186 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="ArenaGUI"]
+
+[node name="Bars" type="VBoxContainer" parent="ArenaGUI"]
+margin_right = 1210.0
+margin_bottom = 186.0
+
+[node name="LifeBar" parent="ArenaGUI/Bars" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 1210.0
+margin_bottom = 182.0

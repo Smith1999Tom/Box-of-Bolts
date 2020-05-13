@@ -22,7 +22,6 @@ var input = null
 var mobile = false
 
 onready var camera = $Camera
-onready var gui = $CanvasLayer/ArenaGUI
 
 var actionQueue = []
 
@@ -40,7 +39,7 @@ func _ready():
 	
 	player.set_name("Player")
 	
-	gui.init()
+	
 	
 	mainMenu.init(self)
 	leagueMenu.init(self, player)

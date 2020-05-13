@@ -35,30 +35,33 @@ var oldpos = Vector2(0,0)
 
 var screenpos
 var state = "Idle"
-onready var arena = get_parent()
+var arena
 var scaleFactor = 1
 
 var main
 var enemy
 
-func ready():
+func _ready():
 	$AnimatedSprite.play("Idle")
+	arena = get_parent()
+	
 	
 func init(aScale, enemyRef, mainRef):
+	
 	scaleFactor = aScale
 	enemy = enemyRef
 	main = mainRef
-	connect("onHit", main.gui, "onHit")
-	connect("onAction", main.gui, "onAction")
+	connect("onHit", arena.gui, "onHit")
+	connect("onAction", arena.gui, "onAction")
 	pass
 
 func _process(delta):
 	var rechargeFactor = 1.0
 	if(state == "StepForward"):
-		self.position.x += ((stepForwardDistance * delta * stepForwardSpeed * direction)/ scaleFactor)
+		self.position.x += ((stepForwardDistance * delta * stepForwardSpeed * direction))
 		rechargeFactor = 0.2
 	if(state == "StepBackward"):
-		self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed * direction) / scaleFactor)
+		self.position.x -= ((stepForwardDistance * delta * stepBackwardSpeed * direction))
 		rechargeFactor = 0.2
 	if(state == "LeftPunch"):
 		rechargeFactor = 0.2
@@ -101,18 +104,20 @@ func idle():
 	
 
 func stepForward():
-	end_block()
-	if(state != "Idle"):
+	
+	if(state != "Idle" and state != "Block"):
 		return
+	end_block()
 	$AnimatedSprite.speed_scale = stepForwardSpeed*2
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
 	reduceEnergy(0, 1)
 
 func lPunch():
-	end_block()
-	if(state != "Idle" or energy < lPunchEnergy):
+	
+	if((state != "Idle" and state != "Block") or energy < lPunchEnergy):
 		return
+	end_block()
 	reduceEnergy(lPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
 	#$AnimatedSprite.speed_scale = 1.5
@@ -121,9 +126,10 @@ func lPunch():
 	
 
 func rPunch():
-	end_block()
-	if(state != "Idle" or energy < rPunchEnergy):
+	
+	if((state != "Idle" and state != "Block") or energy < rPunchEnergy):
 		return
+	end_block()
 	reduceEnergy(rPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	#$AnimatedSprite.speed_scale = 1.5

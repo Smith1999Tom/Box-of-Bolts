@@ -4,6 +4,7 @@ onready var root = get_tree().get_root()
 var main = null
 var player = null
 var enemy = null
+onready var gui = $CanvasLayer/ArenaGUI
 
 var scaleFactor = 1.0
 
@@ -17,12 +18,19 @@ var leftBoundary = 0
 var rightBoundary = 0
 
 func _ready():
+	add_child(player)
+	add_child(enemy)
 	scaleFactor = main.get_view_scaling_factor()
 	self.scale = scaleFactor
 	main.move_camera_to_bottom()
-	
+	gui.init()
 	leftBoundary = 0
 	rightBoundary = 1280
+	
+	
+	
+	player.init(scaleFactor, enemy, main)
+	enemy.init(scaleFactor, player, main)
 	
 func _process(delta):
 	if(timeLeft <= 0):
@@ -44,11 +52,7 @@ func init(mainRef):
 	player = main.get_player_reference()
 	enemy = main.get_enemy_reference()
 	
-	call_deferred("add_child", player)
-	call_deferred("add_child", enemy)
 	
-	player.init(scaleFactor, enemy, main)
-	enemy.init(scaleFactor, player, main)
 
 	
 func slide_stage_left():

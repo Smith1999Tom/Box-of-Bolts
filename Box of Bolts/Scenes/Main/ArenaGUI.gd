@@ -31,7 +31,7 @@ func init():
 	updateEnergy("Player", player_max_energy)
 	updateHealth("Enemy", enemy_max_health)
 	updateEnergy("Enemy", enemy_max_energy)
-	self.rect_scale = main.get_view_scaling_factor()
+	self.rect_scale = main.scaleFactor
 	
 
 func onHit(name, healthValue):
