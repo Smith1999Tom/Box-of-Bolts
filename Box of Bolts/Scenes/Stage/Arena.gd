@@ -19,11 +19,13 @@ var leftBoundary = 0
 var rightBoundary = 0
 
 func _ready():
+	
 	$CountdownLayer/CountdownSprite.play()
 	add_child(player)
 	add_child(enemy)
 	scaleFactor = main.get_view_scaling_factor()
 	self.scale = scaleFactor
+	$CountdownLayer.scale = scaleFactor
 	main.move_camera_to_bottom()
 	gui.init()
 	leftBoundary = 0

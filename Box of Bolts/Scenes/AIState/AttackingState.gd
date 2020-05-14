@@ -19,6 +19,8 @@ func generateCommand(mech, opponent):
 		punches += 1
 		return tapLeft
 	else:
+		if(mech.energy < mech.rPunchEnergy):
+			return waitingState
 		punches +=1
 		return tapRight
 	pass

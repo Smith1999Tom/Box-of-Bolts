@@ -113,7 +113,6 @@ func stepForward():
 	$AnimatedSprite.speed_scale = stepForwardSpeed*2
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
-	reduceEnergy(0, 1)
 
 func lPunch():
 	
@@ -182,7 +181,6 @@ func endHit():
 	
 func stepBackward():
 	#print("ERROR - Called mech.stepBackward instead of a player or enemy stepBackward.")
-	reduceEnergy(0, 1)
 	pass
 	
 func reduceEnergy(amount, cooldownFactor):
