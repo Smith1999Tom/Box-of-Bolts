@@ -19,11 +19,23 @@ var player = null
 var enemy = null
 var input = null
 
+var bolts = 1000
+
 var mobile = false
 
 onready var camera = $Camera
 
 var actionQueue = []
+
+
+var LArmSpeedBonus = 0
+var LArmDamageBonus = 0
+var RArmSpeedBonus = 0
+var RArmDamageBonus = 0
+var BodyHealthBonus = 0
+var BodyEnergyBonus = 0
+
+
 
 func _ready():
 	camera.move_camera_to_top()
@@ -88,6 +100,7 @@ func _on_changeMenu_Upgrade():
 	
 func _on_changeMenu_Main():
 	root.call_deferred("add_child", mainMenu)
+	updatePlayerStats()
 	pass
 	
 func get_player_reference():
@@ -109,6 +122,13 @@ func shake_camera():
 	camera.shake(0.2, 15, 8)
 	pass
 
+func updatePlayerStats():
+	player.max_health = 100 + BodyHealthBonus*10
+	player.max_energy = 100 + BodyEnergyBonus*10
+	player.lPunchSpeed = 1.0 + float(LArmSpeedBonus)/10
+	player.lPunchDamage = 5 + LArmDamageBonus
+	player.rPunchSpeed = 1.0 + float(RArmSpeedBonus)/10
+	player.rPunchDamage = 15 + RArmDamageBonus*3
 
 
 func _process(delta):

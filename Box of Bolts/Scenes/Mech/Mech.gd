@@ -17,6 +17,8 @@ var energy = max_energy
 
 var lPunchEnergy = 20
 var rPunchEnergy = 40
+var lPunchSpeed = 1.0
+var rPunchSpeed = 1.0
 var lPunchDamage = 5
 var rPunchDamage = 15
 
@@ -121,7 +123,7 @@ func lPunch():
 	end_block()
 	reduceEnergy(lPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
-	#$AnimatedSprite.speed_scale = 1.5
+	$AnimatedSprite.speed_scale = lPunchSpeed
 	$AnimatedSprite.play("LPunch")
 	state = "LeftPunch"
 	
@@ -133,7 +135,7 @@ func rPunch():
 	end_block()
 	reduceEnergy(rPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
-	#$AnimatedSprite.speed_scale = 1.5
+	$AnimatedSprite.speed_scale = rPunchSpeed
 	$AnimatedSprite.play("RPunch")
 	state = "RightPunch"
 

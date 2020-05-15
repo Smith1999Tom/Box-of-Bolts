@@ -17,10 +17,10 @@ var enemy_animated_energy = 0
 onready var main = get_parent().get_parent()
 	
 func init():
-	var player_max_health = main.player.health
-	var player_max_energy = main.player.energy
-	var enemy_max_health = main.enemy.health
-	var enemy_max_energy = main.enemy.energy
+	var player_max_health = main.player.max_health
+	var player_max_energy = main.player.max_energy
+	var enemy_max_health = main.enemy.max_health
+	var enemy_max_energy = main.enemy.max_energy
 	
 	player_healthbar.max_value = player_max_health
 	player_energybar.max_value = player_max_energy
