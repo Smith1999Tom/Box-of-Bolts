@@ -96,6 +96,7 @@ func _on_changeMenu_League():
 	
 func _on_changeMenu_Upgrade():
 	root.call_deferred("add_child", upgradeMenu)
+	upgradeMenu._ready()
 	pass
 	
 func _on_changeMenu_Main():

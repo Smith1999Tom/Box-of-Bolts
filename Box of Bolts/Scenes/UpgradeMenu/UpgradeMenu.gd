@@ -7,7 +7,7 @@ var player = null
 
 var bolts = -1
 
-onready var root = get_tree().get_root()
+var root
 onready var display = $CanvasLayer
 
 var LArmSpeedCost
@@ -48,9 +48,11 @@ func _ready():
 	BodyHealthCost = BodyHealthBonus * 10 + 100
 	BodyEnergyCost = BodyEnergyBonus * 10 + 100
 	
+	#root = get_tree().get_root()
 	refreshValues()
 
 func init(MainRef, PlayerRef):
+	
 	main = MainRef
 	player = PlayerRef
 
@@ -70,7 +72,7 @@ func _on_BackBtn_pressed():
 	
 	
 	emit_signal("changeMenu_Main")
-	root.call_deferred("remove_child", self)
+	get_tree().get_root().call_deferred("remove_child", self)
 	print("Back")
 	pass # Replace with function body.
 
@@ -171,3 +173,5 @@ func refreshValues():
 	$CanvasLayer/Body/BODY/HBoxContainer/MarginContainer3/MarginContainer2/BodyEnergyBonus.text = "+" + str(BodyEnergyBonus)
 	
 	$CanvasLayer/BoltCount.text = str(bolts)
+	
+	main.bolts = bolts
