@@ -58,6 +58,16 @@ func init(aScale, enemyRef, mainRef):
 	pass
 
 func _process(delta):
+	
+	if(health <= 0):
+		if(name == "Player"):
+			arena.onLose()
+			get_parent().call_deferred("remove_child", self)
+		elif(name == "Enemy"):
+			arena.onWin()
+			get_parent().call_deferred("remove_child", self)
+	
+	
 	if(state == "Countdown"):
 		return
 	var rechargeFactor = 1.0

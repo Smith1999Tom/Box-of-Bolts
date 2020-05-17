@@ -31,6 +31,8 @@ func _ready():
 	leftBoundary = 0
 	rightBoundary = 1280
 	
+	$EndSlateLayer/Control.hide()
+	
 	
 	
 	player.init(scaleFactor, enemy, main)
@@ -103,3 +105,34 @@ func _on_CountdownSprite_frame_changed():
 		player.idle()
 		enemy.idle()
 	pass # Replace with function body.
+	
+	
+func onGameEnd(boltAmount):
+	$EndSlateLayer/Control.show()
+	$EndSlateLayer/Control/Bolts.text = str(boltAmount)
+	main.bolts += boltAmount
+	$ArenaGuiLayer/ArenaGUI.hide()
+	player.state = "Countdown"
+	enemy.state = "Countdown"
+	pass
+	
+func onWin():
+	print("win")
+	onGameEnd(130)
+	$EndSlateLayer/Control/LoseCard.hide()
+	yield(get_tree().create_timer(3.0), "timeout")
+	returnToMenu()
+	pass
+	
+func onLose():
+	print("lose")
+	onGameEnd(30)
+	$EndSlateLayer/Control/WinCard.hide()
+	yield(get_tree().create_timer(3.0), "timeout")
+	returnToMenu()
+	pass
+	
+func returnToMenu():
+	main._on_changeMenu_Main()
+	root.call_deferred("remove_child", self)
+	pass
