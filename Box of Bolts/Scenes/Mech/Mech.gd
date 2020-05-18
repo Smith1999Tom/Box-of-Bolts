@@ -67,6 +67,10 @@ func _process(delta):
 			arena.onWin()
 			get_parent().call_deferred("remove_child", self)
 	
+	if(hitCooldownRemaining > 0):
+		hitCooldownRemaining -= delta
+	else:
+		hitCooldownRemaining = 0
 	
 	if(state == "Countdown"):
 		return
@@ -89,11 +93,7 @@ func _process(delta):
 			var distanceBetweenMechs = abs(self.position.x - enemy.position.x)
 			if distanceBetweenMechs <= 400:
 				enemy.getHit(rPunchDamage)
-	if(state == "Hit"):
-		if(hitCooldownRemaining > 0):
-			hitCooldownRemaining -= delta
-		else:
-			hitCooldownRemaining = 0	
+	if(state == "Hit"):	
 		if(stunTimeRemaining > 0):
 			stunTimeRemaining -= delta
 		else:
@@ -118,6 +118,10 @@ func idle():
 	
 
 func stepForward():
+	
+	var distanceBetweenMechs = abs(self.position.x - enemy.position.x)
+	if distanceBetweenMechs <= 400:
+		return
 	
 	if((state != "Idle" and state != "Block") or state == "Countdown"):
 		return
@@ -173,7 +177,7 @@ func block():
 	$AnimatedSprite.play("Block")
 	
 func end_block():
-	if(state == "Countdown"):
+	if(state == "Countdown" or state == "Hit"):
 		return
 	print("DEBUG: " + self.name + " has stopped blocking")
 	state = "Idle"
@@ -181,6 +185,9 @@ func end_block():
 	
 func getHit(damage):
 	if(state == "Block"):
+		if(enemy.state == "LeftPunch" && hitCooldownRemaining == 0):
+			reduceEnergy(-10, -1)
+			hitCooldownRemaining = 0.1
 		if(enemy.state == "RightPunch"):
 			reduceEnergy(-50, 1)
 			state = "Idle"
