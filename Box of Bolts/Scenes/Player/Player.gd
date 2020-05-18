@@ -17,7 +17,8 @@ func _ready():
 	
 func stepBackward():
 	var shouldMove = false
-	end_block()
+	if(state == "Block"):
+		end_block()
 	if(state != "Idle" or stunTimeRemaining > 0 or state == "Countdown"):
 		return
 	

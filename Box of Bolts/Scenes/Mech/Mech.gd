@@ -119,9 +119,10 @@ func idle():
 
 func stepForward():
 	
-	if(state != "Idle" and state != "Block" or state == "Countdown"):
+	if((state != "Idle" and state != "Block") or state == "Countdown"):
 		return
-	end_block()
+	if(state == "Block"):
+		end_block()
 	$AnimatedSprite.speed_scale = stepForwardSpeed*2
 	$AnimatedSprite.play("StepForward")
 	state = "StepForward"
@@ -130,7 +131,8 @@ func lPunch():
 	
 	if((state != "Idle" and state != "Block") or energy < lPunchEnergy or state == "Countdown"):
 		return
-	end_block()
+	if(state == "Block"):
+		end_block()
 	reduceEnergy(lPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(44 * direction, 4)	
 	$AnimatedSprite.speed_scale = lPunchSpeed
@@ -142,7 +144,8 @@ func rPunch():
 	
 	if((state != "Idle" and state != "Block") or energy < rPunchEnergy or state == "Countdown"):
 		return
-	end_block()
+	if(state == "Block"):
+		end_block()
 	reduceEnergy(rPunchEnergy * -1, 1)
 	$AnimatedSprite.offset = Vector2(20 * direction, 0)	
 	$AnimatedSprite.speed_scale = rPunchSpeed
@@ -177,6 +180,11 @@ func end_block():
 	$AnimatedSprite.play("Idle")
 	
 func getHit(damage):
+	if(state == "Block"):
+		if(enemy.state == "RightPunch"):
+			reduceEnergy(-50, 1)
+			state = "Idle"
+		pass
 	if(state != "Block" and hitCooldownRemaining == 0):
 		state = "Hit"
 		hitCooldownRemaining = hitCooldown
@@ -186,6 +194,7 @@ func getHit(damage):
 		print("DEBUG: " + self.name + " got hit")
 		stunTimeRemaining = baseStunTime
 		main.shake_camera()
+	
 	
 func endHit():
 	state = "Idle"

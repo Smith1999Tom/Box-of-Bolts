@@ -102,8 +102,10 @@ func _on_CountdownSprite_animation_finished():
 
 func _on_CountdownSprite_frame_changed():
 	if($CountdownLayer/CountdownSprite.frame == 3):
-		player.idle()
-		enemy.idle()
+		if(player.state == "Countdown"):
+			player.idle()
+		if(enemy.state == "Countdown"):
+			enemy.idle()
 	pass # Replace with function body.
 	
 	

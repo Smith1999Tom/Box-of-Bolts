@@ -12,6 +12,7 @@ func _ready():
 func generateCommand(mech, opponent):
 	var distance = mech.getDistanceBetweenMechs()
 	if(distance > 400):
+		print("DEBUG: AI advancing to attack")
 		return swipeRight
 	if(mech.energy < mech.lPunchEnergy):
 		return waitingState

@@ -12,7 +12,7 @@ func _ready():
 	screenpos = get_viewport_rect().size
 	#position.x = screenpos.x*0.75
 	position.x = 1280*0.75
-	oldpos = position
+	oldpos.x = position.x
 	direction = -1
 	ai = arena.main.ai
 	self.connect("getNewCommand", ai, "generateCommand")
@@ -27,7 +27,8 @@ func _process(delta):
 		emit_signal("getNewCommand")
 
 func stepBackward():
-	end_block()
+	if(state == "Block"):
+		end_block()
 	var shouldMove = false
 	if(state != "Idle" or stunTimeRemaining > 0):
 		return
