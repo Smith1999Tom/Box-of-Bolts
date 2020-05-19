@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Enemy_LPunch_Updated_Export.png">
+	<!-- Created with Adobe Animate version 20.0.3.25487 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Enemy_LPunch_Updated0000" x="0" y="0" width="303" height="270" pivotX="3" pivotY="7.3"/>
+	<SubTexture name="Enemy_LPunch_Updated0001" x="303" y="0" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0002" x="606" y="0" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0003" x="909" y="0" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0004" x="1212" y="0" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0005" x="1515" y="0" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0006" x="0" y="270" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0007" x="303" y="270" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0008" x="606" y="270" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0009" x="909" y="270" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0010" x="1212" y="270" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0011" x="1515" y="270" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0012" x="0" y="540" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0013" x="303" y="540" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0014" x="606" y="540" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0015" x="909" y="540" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0016" x="1212" y="540" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0017" x="1515" y="540" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0018" x="0" y="810" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0019" x="303" y="810" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0020" x="606" y="810" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0021" x="909" y="810" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0022" x="1212" y="810" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0023" x="1515" y="810" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0024" x="0" y="1080" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0025" x="303" y="1080" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0026" x="606" y="1080" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0027" x="909" y="1080" width="303" height="270"/>
+	<SubTexture name="Enemy_LPunch_Updated0028" x="1212" y="1080" width="303" height="270"/>
+</TextureAtlas>

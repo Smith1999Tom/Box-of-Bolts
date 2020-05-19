@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bensound-moose.wav-ac314f7c0daf44a567325b37b302449c.sample"
+
+[deps]
+
+source_file="res://bensound-moose.wav"
+dest_files=[ "res://.import/bensound-moose.wav-ac314f7c0daf44a567325b37b302449c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

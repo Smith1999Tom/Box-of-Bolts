@@ -24,3 +24,15 @@ func _on_LeagueBtn_pressed():
 func _on_UpgradeBtn_pressed():
 	emit_signal("changeMenu_Upgrade")
 	root.call_deferred("remove_child", self)
+
+
+func _on_HelpBack_pressed():
+	$HelpScreen.hide()
+	$HelpButton.show()
+	pass # Replace with function body.
+
+
+func _on_HelpButton_pressed():
+	$HelpScreen.show()
+	$HelpButton.hide()
+	pass # Replace with function body.

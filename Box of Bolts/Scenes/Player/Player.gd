@@ -1,55 +1,38 @@
 extends Mech
 
-export var stepForwardDistance = 1280*0.125
-export var stepForwardSpeed = 1.0
-export var stepBackwardSpeed = 0.7
-
-var screenpos
-var state = "Idle"
-onready var arena = get_parent()
-
-signal slideLeft
-signal slideRight
 
 
 func _ready():
-	$AnimatedSprite.play("Idle")
-	write_health()
+	._ready()
+	direction = 1
+	
+	#$AnimatedSprite.play("Idle")
 	screenpos = get_viewport_rect().size
 	position.x = 1280*0.25
-	
+	oldpos = position
 	pass
-		
 	
-func _process(delta):
-	if(state == "StepForward"):
-		self.position.x += (stepForwardDistance * delta * stepForwardSpeed)
-	if(state == "StepBackward"):
-		self.position.x -= (stepForwardDistance * delta * stepBackwardSpeed)
-	pass	
-	
-func write_health():
-	print(self.health)
 
-func rPunch():
-	$AnimatedSprite.play("RPunch")
-	
-func stepForward():
-	$AnimatedSprite.speed_scale = stepForwardSpeed*2
-	$AnimatedSprite.play("StepForward")
-	state = "StepForward"
-	#self.position.x += stepForwardDistance
+
 	
 func stepBackward():
-	$AnimatedSprite.speed_scale = stepBackwardSpeed*2
-	$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
-	state = "StepBackward"
-	if(position.x <= arena.leftBoundary + 400):
-		#camera.slide_left()
+	var shouldMove = false
+	if(state == "Block"):
+		end_block()
+	if(state != "Idle" or stunTimeRemaining > 0 or state == "Countdown"):
+		return
+	
+	if(position.x > arena.leftBoundary + 320):
+		shouldMove = true
+	elif((position.x <= arena.leftBoundary + 320) && (enemy.position.x < arena.rightBoundary - 320)):
 		arena.slide_stage_left()
-		pass
+		shouldMove = true
+	
+	if(shouldMove):
+		$AnimatedSprite.speed_scale = stepBackwardSpeed*2
+		$AnimatedSprite.play("StepForward")	#TODO Implement backward animation
+		state = "StepBackward"
+		.stepBackward()
+		
+		
 
-func _on_AnimatedSprite_animation_finished():
-	state = "Idle"
-	$AnimatedSprite.speed_scale = 1
-	$AnimatedSprite.play("Idle")

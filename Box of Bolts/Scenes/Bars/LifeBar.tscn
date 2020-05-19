@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Art/HealthBar_Front.png" type="Texture" id=1]
+[ext_resource path="res://Art/Heart.png" type="Texture" id=2]
+[ext_resource path="res://Art/HealthBar_Back.png" type="Texture" id=3]
+[ext_resource path="res://Art/EnergyBar_Back.png" type="Texture" id=4]
+[ext_resource path="res://Art/EnergyBar_Front.png" type="Texture" id=5]
+
+[node name="LifeBar" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 0.269
+margin_left = 20.0
+margin_top = 10.0
+margin_right = -20.0
+rect_min_size = Vector2( 1210, 182 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="HBoxContainer" parent="."]
+margin_right = 618.0
+margin_bottom = 183.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Player"]
+margin_right = 124.0
+margin_bottom = 183.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player"]
+margin_left = 128.0
+margin_right = 530.0
+margin_bottom = 97.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="HealthBar" type="TextureProgress" parent="Player/VBoxContainer"]
+margin_right = 402.0
+margin_bottom = 62.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnergyBar" type="TextureProgress" parent="Player/VBoxContainer"]
+margin_top = 66.0
+margin_right = 345.0
+margin_bottom = 97.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemy" type="HBoxContainer" parent="."]
+margin_left = 622.0
+margin_right = 1240.0
+margin_bottom = 183.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 100.373, 25.6821 )
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Enemy"]
+margin_left = 88.0
+margin_right = 490.0
+margin_bottom = 97.0
+size_flags_vertical = 2
+
+[node name="HealthBar" type="TextureProgress" parent="Enemy/VBoxContainer"]
+margin_right = 402.0
+margin_bottom = 62.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnergyBar" type="TextureProgress" parent="Enemy/VBoxContainer"]
+margin_top = 66.0
+margin_right = 345.0
+margin_bottom = 97.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Enemy"]
+margin_left = 494.0
+margin_right = 618.0
+margin_bottom = 183.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
